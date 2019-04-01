@@ -13,7 +13,7 @@ package Modelo;
  *
  * @author israel
  */
-public abstract class Alumno extends Usuario
+public  class Alumno extends Usuario
 {
     String matricula,carrera;
 
@@ -43,8 +43,10 @@ public abstract class Alumno extends Usuario
         this.carrera = carrera;
     }
     
-    @Override//Metodo sobre escrito
-    public abstract void multa(double deuda);
+     public  void multa(double deuda)
+    {
+    
+    }
 
     @Override
     public String toString() 

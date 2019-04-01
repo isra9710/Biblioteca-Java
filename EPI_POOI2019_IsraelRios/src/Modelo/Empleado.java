@@ -12,7 +12,7 @@ package Modelo;
  *
  * @author israel
  */
-public abstract class Empleado extends Usuario
+public  class Empleado extends Usuario
 {
     private static int id_empleado=0;
 
@@ -22,6 +22,9 @@ public abstract class Empleado extends Usuario
         this.id_empleado = id_empleado+1;
     }
     
-  public abstract void multa(double deuda);//Metodo sobre escrito
+   public  void multa(double deuda)
+    {
+    
+    }//Metodo sobre escrito
    
 }

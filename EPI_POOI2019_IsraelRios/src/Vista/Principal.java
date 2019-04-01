@@ -37,16 +37,31 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn_crud_material.setText("CRUD MATERIAL");
+        btn_crud_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crud_materialActionPerformed(evt);
+            }
+        });
 
         btn_crud_prestamos.setText("CRUD PRESTAMOS");
 
         btn_crud_usuarios.setText("CRUD USUARIOS");
 
         btn_mostrar_material.setText("Mostrar Material");
+        btn_mostrar_material.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrar_materialActionPerformed(evt);
+            }
+        });
 
         btn_mostrar_prestamos.setText("Mostrar Prestamos");
 
         btn_mostrar_usuarios.setText("Mostrar Usuarios");
+        btn_mostrar_usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrar_usuariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,6 +100,22 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_mostrar_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_materialActionPerformed
+        // TODO add your handling code here:
+        MostrarMaterial nuevo=new MostrarMaterial();
+        nuevo.show();
+    }//GEN-LAST:event_btn_mostrar_materialActionPerformed
+
+    private void btn_crud_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_materialActionPerformed
+        // TODO add your handling code here:
+        CrudMaterial nuevo = new CrudMaterial();
+        nuevo.show();
+    }//GEN-LAST:event_btn_crud_materialActionPerformed
+
+    private void btn_mostrar_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_usuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_mostrar_usuariosActionPerformed
 
     /**
      * @param args the command line arguments

@@ -12,7 +12,7 @@ package Modelo;
  *
  * @author israel
  */
-public abstract class Usuario
+public  class Usuario
 {
     private String tipoUsuario,nombre,apellidoP,apellidoM,telefono;
     boolean multa, entrega;
@@ -125,7 +125,10 @@ public abstract class Usuario
         this.deuda = deuda;
     }
     
-    public abstract void multa(double deuda);
+    public  void multa(double deuda)
+    {
+    
+    }
 
     @Override
     public String toString() 

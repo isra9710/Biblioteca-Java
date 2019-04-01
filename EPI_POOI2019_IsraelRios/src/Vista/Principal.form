@@ -68,6 +68,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="CRUD MATERIAL"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crud_materialActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_crud_prestamos">
       <Properties>
@@ -83,6 +86,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mostrar Material"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_mostrar_materialActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_mostrar_prestamos">
       <Properties>
@@ -93,6 +99,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Mostrar Usuarios"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_mostrar_usuariosActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
