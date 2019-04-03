@@ -6,7 +6,7 @@ Grupo:B
 Evidencia: Integradora
 EPI_POO2019_IsraelRios.
 */
-package Modelo;
+package modelo;
 
 /**
  *
@@ -16,11 +16,13 @@ public class Libro extends Material
 {
     String editorial;
 
-    public Libro(String editorial, String Titulo, String Autor, int anio) 
+    public Libro(String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
     {
-        super(Titulo, Autor, anio);
+        super(Titulo, Autor, tipoMaterial, anio, ejemplares);
         this.editorial = editorial;
     }
+
+   
 
     public String getEditorial()
     {

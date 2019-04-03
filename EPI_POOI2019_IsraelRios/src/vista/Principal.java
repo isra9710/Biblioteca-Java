@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vista;
+package vista;
 
 /**
  *
  * @author israel
  */
-public class Principal extends javax.swing.JFrame {
+import java.util.ArrayList;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import modelo.*;
+public class Principal extends javax.swing.JFrame 
+{
 
-    /**
-     * Creates new form Principal
-     */
-    public Principal() {
+   
+    public Principal() 
+    {
         initComponents();
     }
 
@@ -44,8 +48,18 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn_crud_prestamos.setText("CRUD PRESTAMOS");
+        btn_crud_prestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crud_prestamosActionPerformed(evt);
+            }
+        });
 
         btn_crud_usuarios.setText("CRUD USUARIOS");
+        btn_crud_usuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_crud_usuariosActionPerformed(evt);
+            }
+        });
 
         btn_mostrar_material.setText("Mostrar Material");
         btn_mostrar_material.addActionListener(new java.awt.event.ActionListener() {
@@ -55,6 +69,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn_mostrar_prestamos.setText("Mostrar Prestamos");
+        btn_mostrar_prestamos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_mostrar_prestamosActionPerformed(evt);
+            }
+        });
 
         btn_mostrar_usuarios.setText("Mostrar Usuarios");
         btn_mostrar_usuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +134,27 @@ public class Principal extends javax.swing.JFrame {
 
     private void btn_mostrar_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_usuariosActionPerformed
         // TODO add your handling code here:
+        MostrarUsuarios nuevo= new MostrarUsuarios();
+        nuevo.show();
     }//GEN-LAST:event_btn_mostrar_usuariosActionPerformed
+
+    private void btn_crud_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_prestamosActionPerformed
+        // TODO add your handling code here:
+        CrudPrestamos nuevo=new CrudPrestamos();
+       nuevo.show();
+    }//GEN-LAST:event_btn_crud_prestamosActionPerformed
+
+    private void btn_mostrar_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_prestamosActionPerformed
+        // TODO add your handling code here:
+         MostrarPrestamos nuevo=new MostrarPrestamos();
+        nuevo.show();
+    }//GEN-LAST:event_btn_mostrar_prestamosActionPerformed
+
+    private void btn_crud_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_usuariosActionPerformed
+        // TODO add your handling code here:
+        CrudUsuarios nuevo=new CrudUsuarios();
+        nuevo.show();
+    }//GEN-LAST:event_btn_crud_usuariosActionPerformed
 
     /**
      * @param args the command line arguments

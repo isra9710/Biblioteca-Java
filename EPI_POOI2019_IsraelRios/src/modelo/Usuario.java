@@ -6,7 +6,7 @@ Grupo:B
 Evidencia: Integradora
 EPI_POO2019_IsraelRios.
 */
-package Modelo;
+package modelo;
 
 /**
  *
@@ -15,22 +15,24 @@ package Modelo;
 public  class Usuario
 {
     private String tipoUsuario,nombre,apellidoP,apellidoM,telefono;
-    boolean multa, entrega;
-    double deuda;
-    static int id_usuario=0;
+    private boolean retardo, entrega;
+    double deuda,multa;
+    public static int id_usuario=0;
 
-    public Usuario(String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono) 
-    {
+    public Usuario(String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono) {
         this.tipoUsuario = tipoUsuario;
         this.nombre = nombre;
         this.apellidoP = apellidoP;
         this.apellidoM = apellidoM;
         this.telefono = telefono;
-        multa=false;
+        multa=0.0;
         entrega=false;
+        retardo=false;
         deuda=0.0;
         id_usuario=id_usuario+1;
     }
+
+    
 
     public String getTipoUsuario() 
     {
@@ -81,17 +83,25 @@ public  class Usuario
         this.telefono = telefono;
     }
 
-    public boolean isMulta() 
-    {
+    public boolean isRetardo() {
+        return retardo;
+    }
+
+    public void setRetardo(boolean retardo) {
+        this.retardo = retardo;
+    }
+
+    public double getMulta() {
         return multa;
     }
 
-    public void setMulta(boolean multa)
-    {
+    public void setMulta(double multa) {
         this.multa = multa;
     }
 
-    public boolean isEntrega()
+   
+
+    public boolean getEntrega()
     {
         return entrega;
     }
@@ -118,6 +128,10 @@ public  class Usuario
     public double getDeuda() 
     {
         return deuda;
+    }
+    public int getIdUsuario()
+    {
+        return id_usuario;
     }
 
     public void setDeuda(double deuda) 

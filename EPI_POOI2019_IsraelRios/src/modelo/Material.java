@@ -6,7 +6,7 @@ Grupo:B
 Evidencia: Integradora
 EPI_POO2019_IsraelRios.
 */
-package Modelo;
+package modelo;
 
 /**
  *
@@ -15,17 +15,23 @@ package Modelo;
 public class Material 
 {
     static int id_material=0;
-    String Titulo,Autor;
+    String Titulo,Autor, tipoMaterial;
     int anio;
     boolean status;
+    int ejemplares;
 
-    public Material(String Titulo, String Autor, int anio) {
+    public Material(String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares) {
         this.Titulo = Titulo;
         this.Autor = Autor;
+        this.tipoMaterial = tipoMaterial;
         this.anio = anio;
+        this.ejemplares = ejemplares;
         status=true;
         id_material=id_material+1;
     }
+    
+
+   
     
     public static int getId_material() 
     {
@@ -66,6 +72,37 @@ public class Material
     {
         this.anio = anio;
     }
+    public int getIdMaterial()
+    {
+        return id_material;
+    }
+
+    public String getTipoMaterial() {
+        return tipoMaterial;
+    }
+
+    public void setTipoMaterial(String tipoMaterial) {
+        this.tipoMaterial = tipoMaterial;
+    }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public int getEjemplares() {
+        return ejemplares;
+    }
+
+    public void setEjemplares(int ejemplares) {
+        this.ejemplares = ejemplares;
+    }
+    
+    
+    
     public void aniadir()
     {
     }

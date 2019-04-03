@@ -6,7 +6,7 @@ Grupo:B
 Evidencia: Integradora
 EPI_POO2019_IsraelRios.
 */
-package Modelo;
+package modelo;
 
 /**
  *

@@ -6,7 +6,7 @@ Grupo:B
 Evidencia: Integradora
 EPI_POO2019_IsraelRios.
 */
-package Modelo;
+package modelo;
 
 import java.util.Date;
 
@@ -16,16 +16,18 @@ import java.util.Date;
  */
 public class Prestamo
 {
-    static int id_prestamo;
-    Material material;
-    Usuario usuario;
-    Date fechaSalida,fechaRegreso;
+    public static int id_prestamo=0;
+    private Usuario usuario;
+    private Date fechaSalida,fechaRegreso;
+    private boolean status;
 
-    public Prestamo(Material material, Usuario usuario, Date fechaSalida) 
+    public Prestamo( Usuario usuario, Date fechaSalida,Date fechaRegreso) 
     {
-        this.material = material;
         this.usuario = usuario;
         this.fechaSalida = fechaSalida;
+        this.fechaRegreso=fechaRegreso;
+        status= false;
+        id_prestamo=id_prestamo+1;
     }
 
     public static int getId_prestamo() {
@@ -36,13 +38,6 @@ public class Prestamo
         Prestamo.id_prestamo = id_prestamo;
     }
 
-    public Material getMaterial() {
-        return material;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -66,6 +61,10 @@ public class Prestamo
 
     public void setFechaRegreso(Date fechaRegreso) {
         this.fechaRegreso = fechaRegreso;
+    }
+    public int getIdPrestamo()
+    {
+        return id_prestamo;
     }
     
     
