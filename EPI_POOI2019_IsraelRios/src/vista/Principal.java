@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Nombres: Israel Rios Contreras
+Carrera: Ingenieria en informatica
+Cuatrimestre: 5
+Grupo:B
+Evidencia: Integradora
+EPI_POO2019_IsraelRios.
+*/
 package vista;
 
 /**
@@ -13,13 +16,14 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import modelo.*;
+import controlador.Biblioteca;
 public class Principal extends javax.swing.JFrame 
 {
-
    
     public Principal() 
     {
         initComponents();
+        
     }
 
     /**
@@ -87,11 +91,14 @@ public class Principal extends javax.swing.JFrame
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_crud_material)
-                    .addComponent(btn_mostrar_material))
-                .addGap(63, 63, 63)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_crud_material))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(btn_mostrar_material)))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_crud_prestamos)
                     .addComponent(btn_mostrar_prestamos))
@@ -99,7 +106,7 @@ public class Principal extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_mostrar_usuarios)
                     .addComponent(btn_crud_usuarios))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,12 +116,12 @@ public class Principal extends javax.swing.JFrame
                     .addComponent(btn_crud_material)
                     .addComponent(btn_crud_prestamos)
                     .addComponent(btn_crud_usuarios))
-                .addGap(104, 104, 104)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_mostrar_material)
                     .addComponent(btn_mostrar_prestamos)
                     .addComponent(btn_mostrar_usuarios))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(115, 115, 115))
         );
 
         pack();

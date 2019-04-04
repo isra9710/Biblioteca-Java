@@ -51,8 +51,10 @@ public  class Alumno extends Usuario
     @Override
     public String toString() 
     {
-        return "Alumno{" + "matricula=" + matricula + ", carrera=" + carrera + '}';
+        
+        return super.toString()+"Alumno{" + "matricula=" + matricula + ", carrera=" + carrera + '}';
     }
+
   
     
 }

@@ -42,7 +42,8 @@ public class Egresado extends Alumno
     @Override
     public String toString() 
     {
-        return "Egresado{" + "cedula=" + cedula + '}';
+        
+        return super.toString()+ "Egresado{" + "cedula=" + cedula + '}';
     }
 
     

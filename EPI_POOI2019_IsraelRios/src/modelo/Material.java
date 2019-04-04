@@ -100,6 +100,11 @@ public class Material
     public void setEjemplares(int ejemplares) {
         this.ejemplares = ejemplares;
     }
+
+    @Override
+    public String toString() {
+        return "Material{" + "Titulo=" + Titulo + ", Autor=" + Autor + ", tipoMaterial=" + tipoMaterial + ", anio=" + anio + ", status=" + status + ", ejemplares=" + ejemplares + '}';
+    }
     
     
     

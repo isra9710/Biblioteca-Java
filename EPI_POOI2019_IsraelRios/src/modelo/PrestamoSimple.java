@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Nombres: Israel Rios Contreras
+Carrera: Ingenieria en informatica
+Cuatrimestre: 5
+Grupo:B
+Evidencia: Integradora
+EPI_POO2019_IsraelRios.
+*/
 package modelo;
 
 import java.util.Date;
@@ -15,11 +18,12 @@ public class PrestamoSimple extends Prestamo
 {
     private Material material;
 
-    public PrestamoSimple(Usuario usuario, Date fechaSalida, Date fechaRegreso,Material material) 
-    {
-        super(usuario, fechaSalida, fechaRegreso);
-        this.material=material;
+    public PrestamoSimple(Material material, Usuario usuario, Date fechaSalida, Date fechaRegreso, boolean status, String tipoPrestamo) {
+        super(usuario, fechaSalida, fechaRegreso, status, tipoPrestamo);
+        this.material = material;
     }
+
+   
 
     public Material getMaterial() {
         return material;
@@ -28,7 +32,11 @@ public class PrestamoSimple extends Prestamo
     public void setMaterial(Material material) {
         this.material = material;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PrestamoSimple{" + "material=" + material + '}';
+    }
 
     
     

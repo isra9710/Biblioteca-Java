@@ -41,6 +41,11 @@ public class Libro extends Material
     {
         
     }
+
+    @Override
+    public String toString() {
+        return "Libro{" + "editorial=" + editorial + '}';
+    }
     
     
     

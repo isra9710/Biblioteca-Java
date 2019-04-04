@@ -46,6 +46,11 @@ public class Regular extends Alumno implements Descuento
         setDeuda(deuda);
     }
 
+    @Override
+    public String toString() {
+        return "Regular{" + "promedio=" + promedio + '}';
+    }
+
    
     
 }

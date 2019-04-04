@@ -43,6 +43,11 @@ public class General extends Empleado implements Descuento
         deuda=deuda-15;
         setDeuda(deuda); 
     }
+
+    @Override
+    public String toString() {
+        return "General{" + "Departamento=" + Departamento + '}';
+    }
     
     
 }

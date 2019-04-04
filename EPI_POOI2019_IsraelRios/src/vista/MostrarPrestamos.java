@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Nombres: Israel Rios Contreras
+Carrera: Ingenieria en informatica
+Cuatrimestre: 5
+Grupo:B
+Evidencia: Integradora
+EPI_POO2019_IsraelRios.
+*/
 package vista;
 
 import controlador.*;
@@ -19,7 +22,8 @@ public class MostrarPrestamos extends javax.swing.JFrame {
      * Creates new form MostrarPrestamos
      */
     Biblioteca biblioteca;
-    public MostrarPrestamos() {
+    public MostrarPrestamos() 
+    {
         initComponents();
         cargarTablaPrestamos();
     }
@@ -29,9 +33,8 @@ public class MostrarPrestamos extends javax.swing.JFrame {
         //2.- limpiar la tabla
         modelo.getDataVector().clear();
         //3.- Iteramos
-       biblioteca.cargarTablaPrestamos(modelo);
-        tablaPrestamos.updateUI();
-        
+        Biblioteca.inicializarPrestamos();
+        Biblioteca.cargarTablaPrestamos(modelo);    
     }
 
     /**

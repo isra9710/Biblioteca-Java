@@ -20,12 +20,29 @@ public class Prestamo
     private Usuario usuario;
     private Date fechaSalida,fechaRegreso;
     private boolean status;
+    String tipoPrestamo;
 
-    public Prestamo( Usuario usuario, Date fechaSalida,Date fechaRegreso) 
-    {
+    public Prestamo(Usuario usuario, Date fechaSalida, Date fechaRegreso, boolean status, String tipoPrestamo) {
         this.usuario = usuario;
         this.fechaSalida = fechaSalida;
-        this.fechaRegreso=fechaRegreso;
+        this.fechaRegreso = fechaRegreso;
+        this.status = status;
+        this.tipoPrestamo = tipoPrestamo;
+        id_prestamo=id_prestamo+1;
+    }
+
+    public Prestamo(Usuario usuario, Date fechaSalida, String tipoPrestamo) {
+        this.usuario = usuario;
+        this.fechaSalida = fechaSalida;
+        this.tipoPrestamo = tipoPrestamo;
+        status= false;
+        id_prestamo=id_prestamo+1;
+    }
+    
+
+  
+    public Prestamo() 
+    {
         status= false;
         id_prestamo=id_prestamo+1;
     }
@@ -66,6 +83,20 @@ public class Prestamo
     {
         return id_prestamo;
     }
+
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Prestamo{" + "usuario=" + usuario + ", fechaSalida=" + fechaSalida + ", fechaRegreso=" + fechaRegreso + ", status=" + status + ", tipoPrestamo=" + tipoPrestamo + '}';
+    }
+    
     
     
 }

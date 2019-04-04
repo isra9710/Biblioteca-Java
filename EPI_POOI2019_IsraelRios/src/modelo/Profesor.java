@@ -29,6 +29,11 @@ public class Profesor extends Empleado
         deuda=deuda+25; 
         setDeuda(deuda);
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "cedula=" + cedula + '}';
+    }
     
     
     

@@ -30,6 +30,12 @@ public class Revista extends Material
         this.categoria = categoria;
     }
 
+    @Override
+    public String toString() {
+        return "Revista{" + "categoria=" + categoria + '}';
+    }
+    
+
      public void aniadir()
     {
     

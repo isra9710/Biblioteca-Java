@@ -8,7 +8,10 @@ EPI_POO2019_IsraelRios.
 */
 package controlador;
 
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
@@ -16,18 +19,35 @@ import java.util.TreeSet;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
 
+
+
 /**
  *
  * @author israel
  */
-public class Biblioteca 
+public abstract class Biblioteca 
 {
     public static TreeMap<Integer,Material> materiales; 
     public static TreeSet<Usuario> usuarios;
     public static ArrayList<Prestamo> prestamos;
-    
-    
-    public void cargarTablaUsuario(DefaultTableModel modelo)
+    public static void inicializarPrestamos()  
+    {
+        Date date1 = new Date(02,02,2010);
+        Date date=new Date(01,1,2010);
+        Egresado nuevo=new Egresado("12345CED","123jhkj","Informatica","Egresado","Israel","Rios","Contreras","7773100701");
+        System.out.println(nuevo.getNombre());
+        Libro libro=new Libro("Porrua","20,000 Viajes de Legua Submarina","Autor","Libro",1867,200);
+        System.out.println(nuevo);
+        System.out.println(libro);
+        Material material= (Material)libro;
+        Usuario usuario=(Usuario)nuevo;
+        PrestamoSimple prestamo=new PrestamoSimple(material,usuario,date,date1,true,"Simple"); 
+        Prestamo cobrar=(Prestamo)prestamo;
+        System.out.println(cobrar);
+        prestamos.add(cobrar);
+    }
+   
+    public static void cargarTablaUsuario(DefaultTableModel modelo)
     {
        
         Iterator<Usuario> it =usuarios.iterator();
@@ -39,7 +59,7 @@ public class Biblioteca
 		}
     }
     
-     public void cargarTablaPrestamos(DefaultTableModel modelo)
+     public static void cargarTablaPrestamos(DefaultTableModel modelo)
     {
         
         for(Prestamo a: prestamos)
@@ -61,7 +81,7 @@ public class Biblioteca
             
         }
     }
-     public void cargarTablaMateriales(DefaultTableModel modelo)
+     public static void cargarTablaMateriales(DefaultTableModel modelo)
      {
          for(Map.Entry<Integer,Material> material: materiales.entrySet())
         {
