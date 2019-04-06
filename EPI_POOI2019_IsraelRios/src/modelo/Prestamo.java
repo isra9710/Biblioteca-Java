@@ -8,6 +8,8 @@ EPI_POO2019_IsraelRios.
 */
 package modelo;
 
+import controlador.Biblioteca;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,45 +18,49 @@ import java.util.Date;
  */
 public class Prestamo
 {
-    public static int id_prestamo=0;
+    public static int id=0;
+    public int id_prestamo;
     private Usuario usuario;
-    private Date fechaSalida,fechaRegreso;
+    private Calendar fechaSalida,fechaRegreso;
     private boolean status;
-    String tipoPrestamo;
+    private Material material;
 
-    public Prestamo(Usuario usuario, Date fechaSalida, Date fechaRegreso, boolean status, String tipoPrestamo) {
+    public Prestamo(Usuario usuario,Material material, Calendar fechaSalida, Calendar fechaRegreso, boolean status) {
         this.usuario = usuario;
         this.fechaSalida = fechaSalida;
         this.fechaRegreso = fechaRegreso;
         this.status = status;
-        this.tipoPrestamo = tipoPrestamo;
-        id_prestamo=id_prestamo+1;
+        this.material=material;
+        id++;
+        id_prestamo=id;
     }
 
-    public Prestamo(Usuario usuario, Date fechaSalida, String tipoPrestamo) {
+    public Prestamo(int id_prestamo, Usuario usuario, Calendar fechaSalida, Calendar fechaRegreso, boolean status, Material material) {
+        this.id_prestamo = id_prestamo;
         this.usuario = usuario;
         this.fechaSalida = fechaSalida;
-        this.tipoPrestamo = tipoPrestamo;
-        status= false;
-        id_prestamo=id_prestamo+1;
+        this.fechaRegreso = fechaRegreso;
+        this.status = status;
+        this.material = material;
     }
     
 
-  
+    public Prestamo(Usuario usuario,Material material ,Calendar fechaSalida,Calendar fechaRegreso) {
+        this.usuario = usuario;
+        this.fechaSalida = fechaSalida;
+        this.material=material;
+        status= false;
+        id++;
+        id_prestamo=id;
+    }
     public Prestamo() 
     {
         status= false;
-        id_prestamo=id_prestamo+1;
+        id++;
+        id_prestamo=id;
     }
 
-    public static int getId_prestamo() {
-        return id_prestamo;
-    }
-
-    public static void setId_prestamo(int id_prestamo) {
-        Prestamo.id_prestamo = id_prestamo;
-    }
-
+  
 
     public Usuario getUsuario() {
         return usuario;
@@ -64,24 +70,20 @@ public class Prestamo
         this.usuario = usuario;
     }
 
-    public Date getFechaSalida() {
+    public Calendar getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(Calendar fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public Date getFechaRegreso() {
+    public Calendar getFechaRegreso() {
         return fechaRegreso;
     }
 
-    public void setFechaRegreso(Date fechaRegreso) {
+    public void setFechaRegreso(Calendar fechaRegreso) {
         this.fechaRegreso = fechaRegreso;
-    }
-    public int getIdPrestamo()
-    {
-        return id_prestamo;
     }
 
     public boolean getStatus() {
@@ -92,11 +94,40 @@ public class Prestamo
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Prestamo{" + "usuario=" + usuario + ", fechaSalida=" + fechaSalida + ", fechaRegreso=" + fechaRegreso + ", status=" + status + ", tipoPrestamo=" + tipoPrestamo + '}';
+    public int getId_prestamo() {
+        return id_prestamo;
+    }
+
+    public void setId_prestamo(int id_prestamo) {
+        this.id_prestamo = id_prestamo;
+    }
+
+    
+
+    
+
+    public Material getMaterial() {
+        return material;
+    }
+    public static void aniadir(int id_prestamo, Usuario usuario, Calendar fechaSalida, Calendar fechaRegreso, boolean status, Material material)
+    {
+        Biblioteca.prestamos.add(new Prestamo(id_prestamo,usuario,fechaSalida,fechaRegreso,status,material));
+       
+    }
+    public static void eliminar(int id_prestamo)
+    {
+        
+    }
+    public void setMaterial(Material material) {
+        this.material = material;
     }
     
+    @Override
+    public String toString() {
+        return "Prestamo{" + "id_prestamo=" + id_prestamo + ", usuario=" + usuario + ", fechaSalida=" + fechaSalida + ", fechaRegreso=" + fechaRegreso + ", status=" + status + ", material=" + material + '}';
+    }
+
+   
     
     
 }

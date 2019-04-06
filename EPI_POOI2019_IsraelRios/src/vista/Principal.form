@@ -23,74 +23,95 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btn_crud_material" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btn_mostrar_material" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btn_crud_revista" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_crud_libro" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btn_crud_prestamo_simple" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btn_crud_prestamo_profesor" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Component id="btn_mostrar_material" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                      <Component id="btn_mostrar_prestamos" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <EmptySpace pref="125" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_crud_prestamos" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_mostrar_prestamos" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="btn_mostrar_usuarios" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btn_mostrar_usuarios" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_crud_usuarios" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="89" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btn_crud_material" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_crud_prestamos" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_crud_usuarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_crud_libro" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_crud_prestamo_simple" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="125" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btn_crud_revista" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btn_crud_prestamo_profesor" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="61" max="32767" attributes="0"/>
+              <Component id="btn_mostrar_prestamos" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_mostrar_material" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btn_mostrar_prestamos" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_mostrar_usuarios" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btn_crud_material">
+    <Component class="javax.swing.JButton" name="btn_crud_libro">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CRUD MATERIAL"/>
+        <Property name="text" type="java.lang.String" value="CRUD LIBRO"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crud_materialActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crud_libroActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btn_crud_prestamos">
+    <Component class="javax.swing.JButton" name="btn_crud_prestamo_simple">
       <Properties>
-        <Property name="text" type="java.lang.String" value="CRUD PRESTAMOS"/>
+        <Property name="text" type="java.lang.String" value="CRUD PRESTAMO SIMPLE"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crud_prestamosActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="btn_crud_usuarios">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="CRUD USUARIOS"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crud_usuariosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_crud_prestamo_simpleActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btn_mostrar_material">
@@ -116,6 +137,29 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_mostrar_usuariosActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Devolver un prestamo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_crud_revista">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CRUD REVISTA"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_crud_prestamo_profesor">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="CRUD PRESTAMO PROFESOR"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButton2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Pagar Multa"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

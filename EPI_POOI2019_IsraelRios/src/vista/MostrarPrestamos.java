@@ -26,6 +26,7 @@ public class MostrarPrestamos extends javax.swing.JFrame {
     {
         initComponents();
         cargarTablaPrestamos();
+        
     }
     public void cargarTablaPrestamos()
     {
@@ -33,8 +34,8 @@ public class MostrarPrestamos extends javax.swing.JFrame {
         //2.- limpiar la tabla
         modelo.getDataVector().clear();
         //3.- Iteramos
-        Biblioteca.inicializarPrestamos();
         Biblioteca.cargarTablaPrestamos(modelo);    
+        tablaPrestamos.updateUI();
     }
 
     /**
@@ -59,15 +60,15 @@ public class MostrarPrestamos extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID Prestamo", "ID Usuario:", "Nombre Usuario:", "Fecha Salida", "Fecha Entrega", "Material 1:", "Material 2:"
+                "ID Prestamo", "ID Usuario:", "Nombre Usuario:", "Fecha Salida", "Fecha Entrega", "Material :", "Estado:"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
             };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(tablaPrestamos);
@@ -78,7 +79,7 @@ public class MostrarPrestamos extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 634, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
                 .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(

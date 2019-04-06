@@ -67,16 +67,9 @@ public class MostrarUsuarios extends javax.swing.JFrame {
                 "Id Usuario:", "Tipo de Usuario:", "Nombre:", "Apellido Paterno:", "Apellido Materno:", "Telefono:", "Deuda:", "Multa:", "Matricula:", "Carrera:", "Id Empleado:", "Cedula:", "Promedio:", "Departamento:"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false, false, false, false, false
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -84,9 +77,6 @@ public class MostrarUsuarios extends javax.swing.JFrame {
         });
         tablaUsuarios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaUsuarios);
-        if (tablaUsuarios.getColumnModel().getColumnCount() > 0) {
-            tablaUsuarios.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

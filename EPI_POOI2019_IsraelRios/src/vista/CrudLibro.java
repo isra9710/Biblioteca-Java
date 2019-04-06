@@ -1,11 +1,8 @@
 /*
-Nombres: Israel Rios Contreras
-Carrera: Ingenieria en informatica
-Cuatrimestre: 5
-Grupo:B
-Evidencia: Integradora
-EPI_POO2019_IsraelRios.
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vista;
 
 import controlador.Biblioteca;
@@ -14,13 +11,13 @@ import controlador.Biblioteca;
  *
  * @author israel
  */
-public class CrudUsuarios extends javax.swing.JFrame {
+public class CrudLibro extends javax.swing.JFrame {
 
     /**
-     * Creates new form CrudUsuarios
+     * Creates new form CrudLibro
      */
     Biblioteca biblioteca;
-    public CrudUsuarios() {
+    public CrudLibro() {
         initComponents();
     }
 
@@ -33,17 +30,34 @@ public class CrudUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        agregarMaterial = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        agregarMaterial.setText("Agregar");
+
+        btnModificar.setText("Modificar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 676, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(agregarMaterial)
+                .addGap(157, 157, 157)
+                .addComponent(btnModificar)
+                .addContainerGap(233, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 402, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(agregarMaterial)
+                    .addComponent(btnModificar))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         pack();
@@ -66,24 +80,27 @@ public class CrudUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CrudUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrudLibro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CrudUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrudLibro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CrudUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrudLibro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CrudUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CrudLibro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CrudUsuarios().setVisible(true);
+                new CrudLibro().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton agregarMaterial;
+    private javax.swing.JButton btnModificar;
     // End of variables declaration//GEN-END:variables
 }

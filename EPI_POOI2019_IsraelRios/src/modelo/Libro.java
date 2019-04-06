@@ -14,7 +14,7 @@ package modelo;
  */
 public class Libro extends Material
 {
-    String editorial;
+    private String editorial;
 
     public Libro(String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
     {
@@ -44,6 +44,7 @@ public class Libro extends Material
 
     @Override
     public String toString() {
+        super.toString();
         return "Libro{" + "editorial=" + editorial + '}';
     }
     

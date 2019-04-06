@@ -23,7 +23,13 @@ public class Principal extends javax.swing.JFrame
     public Principal() 
     {
         initComponents();
-        
+        if(Biblioteca.materiales==null&&Biblioteca.prestamos==null&&Biblioteca.usuarios==null)
+        {
+            Biblioteca.materiales=new ArrayList<Material>();
+            Biblioteca.usuarios=new ArrayList<Usuario>();
+            Biblioteca.prestamos=new ArrayList<Prestamo>();
+            Biblioteca.inicializarPrestamos();
+        }
     }
 
     /**
@@ -35,33 +41,29 @@ public class Principal extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_crud_material = new javax.swing.JButton();
-        btn_crud_prestamos = new javax.swing.JButton();
-        btn_crud_usuarios = new javax.swing.JButton();
+        btn_crud_libro = new javax.swing.JButton();
+        btn_crud_prestamo_simple = new javax.swing.JButton();
         btn_mostrar_material = new javax.swing.JButton();
         btn_mostrar_prestamos = new javax.swing.JButton();
         btn_mostrar_usuarios = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btn_crud_revista = new javax.swing.JButton();
+        btn_crud_prestamo_profesor = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_crud_material.setText("CRUD MATERIAL");
-        btn_crud_material.addActionListener(new java.awt.event.ActionListener() {
+        btn_crud_libro.setText("CRUD LIBRO");
+        btn_crud_libro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crud_materialActionPerformed(evt);
+                btn_crud_libroActionPerformed(evt);
             }
         });
 
-        btn_crud_prestamos.setText("CRUD PRESTAMOS");
-        btn_crud_prestamos.addActionListener(new java.awt.event.ActionListener() {
+        btn_crud_prestamo_simple.setText("CRUD PRESTAMO SIMPLE");
+        btn_crud_prestamo_simple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crud_prestamosActionPerformed(evt);
-            }
-        });
-
-        btn_crud_usuarios.setText("CRUD USUARIOS");
-        btn_crud_usuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crud_usuariosActionPerformed(evt);
+                btn_crud_prestamo_simpleActionPerformed(evt);
             }
         });
 
@@ -86,42 +88,76 @@ public class Principal extends javax.swing.JFrame
             }
         });
 
+        jButton1.setText("Devolver un prestamo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        btn_crud_revista.setText("CRUD REVISTA");
+
+        btn_crud_prestamo_profesor.setText("CRUD PRESTAMO PROFESOR");
+
+        jButton2.setText("Pagar Multa");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_crud_material))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btn_mostrar_material)))
-                .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_mostrar_material)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_crud_revista)
+                                    .addComponent(btn_crud_libro))
+                                .addGap(77, 77, 77)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btn_crud_prestamo_simple)
+                                    .addComponent(btn_crud_prestamo_profesor)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(btn_mostrar_prestamos)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_crud_prestamos)
-                    .addComponent(btn_mostrar_prestamos))
-                .addGap(63, 63, 63)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_mostrar_usuarios)
-                    .addComponent(btn_crud_usuarios))
-                .addContainerGap(89, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton1)
+                            .addGap(52, 52, 52))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(btn_mostrar_usuarios)
+                            .addGap(66, 66, 66)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_crud_material)
-                    .addComponent(btn_crud_prestamos)
-                    .addComponent(btn_crud_usuarios))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                    .addComponent(btn_crud_libro)
+                    .addComponent(btn_crud_prestamo_simple))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_crud_revista)
+                    .addComponent(btn_crud_prestamo_profesor))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(btn_mostrar_prestamos)
+                .addGap(127, 127, 127))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_mostrar_material)
-                    .addComponent(btn_mostrar_prestamos)
                     .addComponent(btn_mostrar_usuarios))
-                .addGap(115, 115, 115))
+                .addGap(80, 80, 80))
         );
 
         pack();
@@ -133,11 +169,11 @@ public class Principal extends javax.swing.JFrame
         nuevo.show();
     }//GEN-LAST:event_btn_mostrar_materialActionPerformed
 
-    private void btn_crud_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_materialActionPerformed
+    private void btn_crud_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_libroActionPerformed
         // TODO add your handling code here:
-        CrudMaterial nuevo = new CrudMaterial();
+        CrudLibro nuevo = new CrudLibro();
         nuevo.show();
-    }//GEN-LAST:event_btn_crud_materialActionPerformed
+    }//GEN-LAST:event_btn_crud_libroActionPerformed
 
     private void btn_mostrar_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_usuariosActionPerformed
         // TODO add your handling code here:
@@ -145,11 +181,11 @@ public class Principal extends javax.swing.JFrame
         nuevo.show();
     }//GEN-LAST:event_btn_mostrar_usuariosActionPerformed
 
-    private void btn_crud_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_prestamosActionPerformed
+    private void btn_crud_prestamo_simpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_prestamo_simpleActionPerformed
         // TODO add your handling code here:
-        CrudPrestamos nuevo=new CrudPrestamos();
+        CrudPrestamoSimple nuevo=new CrudPrestamoSimple();
        nuevo.show();
-    }//GEN-LAST:event_btn_crud_prestamosActionPerformed
+    }//GEN-LAST:event_btn_crud_prestamo_simpleActionPerformed
 
     private void btn_mostrar_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_prestamosActionPerformed
         // TODO add your handling code here:
@@ -157,11 +193,11 @@ public class Principal extends javax.swing.JFrame
         nuevo.show();
     }//GEN-LAST:event_btn_mostrar_prestamosActionPerformed
 
-    private void btn_crud_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_usuariosActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CrudUsuarios nuevo=new CrudUsuarios();
+        DevolverPrestamo nuevo=new DevolverPrestamo();
         nuevo.show();
-    }//GEN-LAST:event_btn_crud_usuariosActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,11 +235,14 @@ public class Principal extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_crud_material;
-    private javax.swing.JButton btn_crud_prestamos;
-    private javax.swing.JButton btn_crud_usuarios;
+    private javax.swing.JButton btn_crud_libro;
+    private javax.swing.JButton btn_crud_prestamo_profesor;
+    private javax.swing.JButton btn_crud_prestamo_simple;
+    private javax.swing.JButton btn_crud_revista;
     private javax.swing.JButton btn_mostrar_material;
     private javax.swing.JButton btn_mostrar_prestamos;
     private javax.swing.JButton btn_mostrar_usuarios;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

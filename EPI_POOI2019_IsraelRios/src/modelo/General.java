@@ -16,9 +16,9 @@ public class General extends Empleado implements Descuento
 {
     String Departamento;
 
-    public General(String Departamento, int id_empleado, String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono)
+    public General(String Departamento, String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono)
     {
-        super(id_empleado, tipoUsuario, nombre, apellidoP, apellidoM, telefono);
+        super(tipoUsuario, nombre, apellidoP, apellidoM, telefono);
         this.Departamento = Departamento;
     }
 
@@ -33,8 +33,8 @@ public class General extends Empleado implements Descuento
     @Override//Metodo sobre escrito
     public void multa(double deuda)
     {
-        deuda=deuda+15;
-        setDeuda(deuda);
+        multa=deuda+15;
+        deuda=0;
     }
 
     @Override//Metodo de interfaz

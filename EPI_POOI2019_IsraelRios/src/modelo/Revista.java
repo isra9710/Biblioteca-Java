@@ -30,8 +30,10 @@ public class Revista extends Material
         this.categoria = categoria;
     }
 
+    
     @Override
     public String toString() {
+        super.toString();
         return "Revista{" + "categoria=" + categoria + '}';
     }
     

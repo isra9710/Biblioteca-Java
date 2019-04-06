@@ -22,7 +22,6 @@ public class MostrarMaterial extends javax.swing.JFrame {
     /**
      * Creates new form MostrarMaterial
      */
-    Biblioteca biblioteca;
     public MostrarMaterial() 
     {
         initComponents();
@@ -34,7 +33,7 @@ public class MostrarMaterial extends javax.swing.JFrame {
         //2.- limpiar la tabla
         modelo.getDataVector().clear();
         //3.- Iteramos
-        biblioteca.cargarTablaMateriales(modelo);
+        Biblioteca.cargarTablaMateriales(modelo);
         tablaMateriales.updateUI();
     }
 
@@ -63,16 +62,9 @@ public class MostrarMaterial extends javax.swing.JFrame {
                 "ID Material:", "Titulo:", "Autor:", "Año:", "Tipo Material:", "Ejemplares:", "Estado:", "Editorial:", "Categoria:"
             }
         ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, true, false, true
             };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -86,15 +78,15 @@ public class MostrarMaterial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         pack();

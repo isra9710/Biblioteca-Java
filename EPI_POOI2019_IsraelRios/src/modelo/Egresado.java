@@ -35,8 +35,8 @@ public class Egresado extends Alumno
 
     @Override//Metodo sobre escrito
     public void multa(double deuda) {
-        deuda=deuda+20;
-        setDeuda(deuda);
+        multa=deuda+20;
+        deuda=0;
     }
 
     @Override

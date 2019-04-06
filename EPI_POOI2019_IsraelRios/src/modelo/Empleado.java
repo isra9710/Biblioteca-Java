@@ -14,13 +14,24 @@ package modelo;
  */
 public  class Empleado extends Usuario
 {
-    private static int id_empleado=0;
+    private static int id=0; 
+    int id_empleado;
 
-    public Empleado(int id_empleado, String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono)
+    public Empleado(String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono)
     {
         super(tipoUsuario, nombre, apellidoP, apellidoM, telefono);
-        this.id_empleado = id_empleado+1;
+        id++;
+        this.id_empleado = id;
     }
+
+    public  int getId_empleado() {
+        return id_empleado;
+    }
+
+    public  void setId_empleado(int id_empleado) {
+        id_empleado = id_empleado;
+    }
+    
     
    public  void multa(double deuda)
     {

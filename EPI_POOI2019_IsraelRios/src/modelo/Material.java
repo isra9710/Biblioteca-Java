@@ -14,11 +14,11 @@ package modelo;
  */
 public class Material 
 {
-    static int id_material=0;
-    String Titulo,Autor, tipoMaterial;
-    int anio;
-    boolean status;
-    int ejemplares;
+    private static int id_material=0;
+    private String Titulo,Autor, tipoMaterial;
+    private int anio;
+    private boolean status;
+    private int ejemplares;
 
     public Material(String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares) {
         this.Titulo = Titulo;
@@ -105,6 +105,8 @@ public class Material
     public String toString() {
         return "Material{" + "Titulo=" + Titulo + ", Autor=" + Autor + ", tipoMaterial=" + tipoMaterial + ", anio=" + anio + ", status=" + status + ", ejemplares=" + ejemplares + '}';
     }
+
+  
     
     
     

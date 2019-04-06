@@ -17,7 +17,8 @@ public  class Usuario
     private String tipoUsuario,nombre,apellidoP,apellidoM,telefono;
     private boolean retardo, entrega;
     double deuda,multa;
-    public static int id_usuario=0;
+    public static int id=0;
+    int id_usuario;
 
     public Usuario(String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono) {
         this.tipoUsuario = tipoUsuario;
@@ -29,7 +30,11 @@ public  class Usuario
         entrega=false;
         retardo=false;
         deuda=0.0;
-        id_usuario=id_usuario+1;
+        id++;
+        id_usuario=id;
+    }
+
+    public Usuario() {
     }
 
     
@@ -83,7 +88,7 @@ public  class Usuario
         this.telefono = telefono;
     }
 
-    public boolean isRetardo() {
+    public boolean getRetardo() {
         return retardo;
     }
 
@@ -109,11 +114,6 @@ public  class Usuario
     public void setEntrega(boolean entrega) 
     {
         this.entrega = entrega;
-    }
-
-    public static int getId_usuario() 
-    {
-        return id_usuario;
     }
     
     public void entregar()

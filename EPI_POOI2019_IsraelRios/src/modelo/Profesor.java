@@ -16,18 +16,27 @@ public class Profesor extends Empleado
 {
     String cedula;
 
-    public Profesor(String cedula, int id_empleado, String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono)
+    public Profesor(String cedula, String tipoUsuario, String nombre, String apellidoP, String apellidoM, String telefono)
     {
-        super(id_empleado, tipoUsuario, nombre, apellidoP, apellidoM, telefono);
+        super(tipoUsuario, nombre, apellidoP, apellidoM, telefono);
         this.cedula = cedula;
         
     }
 
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
+
     @Override//Metodo sobre escrito
     public void multa(double deuda)
     {
-        deuda=deuda+25; 
-        setDeuda(deuda);
+        multa=deuda+25;
+        deuda=0;
     }
 
     @Override

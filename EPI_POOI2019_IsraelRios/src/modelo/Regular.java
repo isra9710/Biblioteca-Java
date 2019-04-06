@@ -35,8 +35,8 @@ public class Regular extends Alumno implements Descuento
     @Override//Metodo sobre escrito
     public void multa(double deuda)
     {
-         deuda=deuda+10;
-         setDeuda(deuda);
+         multa=deuda+10;
+        deuda=0;
     }
 
     @Override//Metodo de interfaz
