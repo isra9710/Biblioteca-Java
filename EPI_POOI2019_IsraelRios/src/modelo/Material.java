@@ -27,7 +27,14 @@ public class Material
         this.tipoMaterial = tipoMaterial;
         this.anio = anio;
         this.ejemplares = ejemplares;
-        status=true;
+        if(ejemplares<=0)
+        {
+            status=false;
+        }
+        else
+        {
+            status=true;
+        }
         id++;
         id_material=id;
     }

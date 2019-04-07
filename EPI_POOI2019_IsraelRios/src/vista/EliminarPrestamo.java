@@ -1,11 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Nombres: Israel Rios Contreras
+Carrera: Ingenieria en informatica
+Cuatrimestre: 5
+Grupo:B
+Evidencia: Integradora
+EPI_POO2019_IsraelRios.
+*/
 package vista;
 
 import controlador.Biblioteca;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Prestamo;
 
@@ -123,6 +127,8 @@ public class EliminarPrestamo extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
         Prestamo.eliminar((int)cmboPrestamosHechos.getSelectedItem());
+        JOptionPane.showMessageDialog(null,"Se ha eliminado este prestamo");
+        this.dispose();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**

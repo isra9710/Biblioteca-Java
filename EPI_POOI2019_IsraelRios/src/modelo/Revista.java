@@ -8,6 +8,9 @@ EPI_POO2019_IsraelRios.
 */
 package modelo;
 
+import controlador.Biblioteca;
+import java.util.Iterator;
+
 /**
  *
  * @author israel
@@ -38,13 +41,28 @@ public class Revista extends Material
     }
     
 
-     public void aniadir()
+     public static void aniadir(String categoria, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
     {
     
     }
-    public void eliminar()
+     public static void editar(String categoria, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
+     {
+     
+     }
+    public static void eliminar(int id)
     {
-        
+         Iterator <Material> it=Biblioteca.materiales.iterator();
+        Material material;
+        while(it.hasNext())
+        {
+            material=it.next();
+            if(material.getId_material()==id)
+            {
+                it.remove();
+                break;
+            }
+            
+        }
     }
     
 }

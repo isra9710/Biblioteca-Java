@@ -17,6 +17,7 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import modelo.*;
 import controlador.Biblioteca;
+import javax.swing.JOptionPane;
 public class Principal extends javax.swing.JFrame 
 {
    
@@ -41,198 +42,282 @@ public class Principal extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_crud_libro = new javax.swing.JButton();
-        btn_crud_prestamo_simple = new javax.swing.JButton();
-        btn_mostrar_material = new javax.swing.JButton();
-        btn_mostrar_prestamos = new javax.swing.JButton();
-        btn_mostrar_usuarios = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        btn_crud_revista = new javax.swing.JButton();
-        btn_crud_prestamo_profesor = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        btnEditarPrestamo = new javax.swing.JButton();
-        btnEliminarPrestamo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        itemAgregarPrestamo = new javax.swing.JMenuItem();
+        itemEditarPrestamo = new javax.swing.JMenuItem();
+        itemDevolverPrestamo = new javax.swing.JMenuItem();
+        itemEliminarPrestamo = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        itemMostrarUsuario = new javax.swing.JMenuItem();
+        itemMostrarMaterial = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuLibro = new javax.swing.JMenu();
+        itemAgregarLibro = new javax.swing.JMenuItem();
+        itemEditarLibro = new javax.swing.JMenuItem();
+        itemEliminarLibro = new javax.swing.JMenuItem();
+        menuRevista = new javax.swing.JMenu();
+        itemAgregarRevista = new javax.swing.JMenuItem();
+        itemEditarRevista = new javax.swing.JMenuItem();
+        itemEliminarRevista = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_crud_libro.setText("CRUD LIBRO");
-        btn_crud_libro.addActionListener(new java.awt.event.ActionListener() {
+        jLabel1.setIcon(new javax.swing.ImageIcon("/media/israel/Nuevo vol/Israel/Universidad/5/POO/Proyecto-Poo/LIBROS-Estantería.jpg")); // NOI18N
+
+        jMenu1.setText("Prestamos");
+
+        itemAgregarPrestamo.setText("Agregar un prestamo");
+        itemAgregarPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crud_libroActionPerformed(evt);
+                itemAgregarPrestamoActionPerformed(evt);
             }
         });
+        jMenu1.add(itemAgregarPrestamo);
 
-        btn_crud_prestamo_simple.setText("Añadir Prestamo");
-        btn_crud_prestamo_simple.addActionListener(new java.awt.event.ActionListener() {
+        itemEditarPrestamo.setText("Editar un prestamo");
+        itemEditarPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crud_prestamo_simpleActionPerformed(evt);
+                itemEditarPrestamoActionPerformed(evt);
             }
         });
+        jMenu1.add(itemEditarPrestamo);
 
-        btn_mostrar_material.setText("Mostrar Material");
-        btn_mostrar_material.addActionListener(new java.awt.event.ActionListener() {
+        itemDevolverPrestamo.setText("Devolver un prestamo");
+        itemDevolverPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mostrar_materialActionPerformed(evt);
+                itemDevolverPrestamoActionPerformed(evt);
             }
         });
+        jMenu1.add(itemDevolverPrestamo);
 
-        btn_mostrar_prestamos.setText("Mostrar Prestamos");
-        btn_mostrar_prestamos.addActionListener(new java.awt.event.ActionListener() {
+        itemEliminarPrestamo.setText("Eliminar un prestamo");
+        itemEliminarPrestamo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mostrar_prestamosActionPerformed(evt);
+                itemEliminarPrestamoActionPerformed(evt);
             }
         });
+        jMenu1.add(itemEliminarPrestamo);
 
-        btn_mostrar_usuarios.setText("Mostrar Usuarios");
-        btn_mostrar_usuarios.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Mostrar");
+
+        itemMostrarUsuario.setText("Mostrar Usuarios");
+        itemMostrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_mostrar_usuariosActionPerformed(evt);
+                itemMostrarUsuarioActionPerformed(evt);
             }
         });
+        jMenu2.add(itemMostrarUsuario);
 
-        jButton1.setText("Devolver un prestamo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        itemMostrarMaterial.setText("Mostrar Materiales");
+        itemMostrarMaterial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                itemMostrarMaterialActionPerformed(evt);
             }
         });
+        jMenu2.add(itemMostrarMaterial);
 
-        btn_crud_revista.setText("CRUD REVISTA");
-
-        btn_crud_prestamo_profesor.setText("CRUD PRESTAMO PROFESOR");
-
-        jButton2.setText("Pagar Multa");
-
-        btnEditarPrestamo.setText("Editar Prestamo");
-        btnEditarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Mostrar Prestamos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarPrestamoActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
+        jMenu2.add(jMenuItem1);
 
-        btnEliminarPrestamo.setText("Eliminar Prestamo");
-        btnEliminarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar1.add(jMenu2);
+
+        menuLibro.setText("Gestionar Libros");
+
+        itemAgregarLibro.setText("Agregar Libro");
+        itemAgregarLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarPrestamoActionPerformed(evt);
+                itemAgregarLibroActionPerformed(evt);
             }
         });
+        menuLibro.add(itemAgregarLibro);
+
+        itemEditarLibro.setText("Editar Libro");
+        itemEditarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEditarLibroActionPerformed(evt);
+            }
+        });
+        menuLibro.add(itemEditarLibro);
+
+        itemEliminarLibro.setText("Eliminar Libro");
+        menuLibro.add(itemEliminarLibro);
+
+        jMenuBar1.add(menuLibro);
+
+        menuRevista.setText("Gestionar Revista");
+
+        itemAgregarRevista.setText("Agregar Revista");
+        itemAgregarRevista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemAgregarRevistaActionPerformed(evt);
+            }
+        });
+        menuRevista.add(itemAgregarRevista);
+
+        itemEditarRevista.setText("Editar Revista");
+        itemEditarRevista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEditarRevistaActionPerformed(evt);
+            }
+        });
+        menuRevista.add(itemEditarRevista);
+
+        itemEliminarRevista.setText("Eliminar Revista");
+        itemEliminarRevista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEliminarRevistaActionPerformed(evt);
+            }
+        });
+        menuRevista.add(itemEliminarRevista);
+
+        jMenuBar1.add(menuRevista);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_mostrar_material)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_crud_revista)
-                                    .addComponent(btn_crud_libro))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_crud_prestamo_simple)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(btnEditarPrestamo))
-                                    .addComponent(btn_crud_prestamo_profesor)))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(244, 244, 244)
-                        .addComponent(btn_mostrar_prestamos)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)
-                            .addComponent(btn_mostrar_usuarios))
-                        .addGap(66, 66, 66))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarPrestamo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_crud_libro)
-                    .addComponent(btn_crud_prestamo_simple)
-                    .addComponent(btnEditarPrestamo)
-                    .addComponent(btnEliminarPrestamo))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_crud_revista)
-                    .addComponent(btn_crud_prestamo_profesor))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(btn_mostrar_prestamos)
-                .addGap(127, 127, 127))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
-                .addComponent(btn_mostrar_usuarios)
-                .addGap(12, 12, 12)
-                .addComponent(btn_mostrar_material)
-                .addGap(80, 80, 80))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_mostrar_materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_materialActionPerformed
-        // TODO add your handling code here:
-        MostrarMaterial nuevo=new MostrarMaterial();
-        nuevo.show();
-    }//GEN-LAST:event_btn_mostrar_materialActionPerformed
-
-    private void btn_crud_libroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_libroActionPerformed
-        // TODO add your handling code here:
-        CrudLibro nuevo = new CrudLibro();
-        nuevo.show();
-    }//GEN-LAST:event_btn_crud_libroActionPerformed
-
-    private void btn_mostrar_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_usuariosActionPerformed
-        // TODO add your handling code here:
-        MostrarUsuarios nuevo= new MostrarUsuarios();
-        nuevo.show();
-    }//GEN-LAST:event_btn_mostrar_usuariosActionPerformed
-
-    private void btn_crud_prestamo_simpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_prestamo_simpleActionPerformed
+    private void itemAgregarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarPrestamoActionPerformed
         // TODO add your handling code here:
         AgregarPrestamo nuevo=new AgregarPrestamo();
-       nuevo.show();
-    }//GEN-LAST:event_btn_crud_prestamo_simpleActionPerformed
-
-    private void btn_mostrar_prestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_mostrar_prestamosActionPerformed
-        // TODO add your handling code here:
-         MostrarPrestamos nuevo=new MostrarPrestamos();
         nuevo.show();
-    }//GEN-LAST:event_btn_mostrar_prestamosActionPerformed
+    }//GEN-LAST:event_itemAgregarPrestamoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void itemEditarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarPrestamoActionPerformed
         // TODO add your handling code here:
-        DevolverPrestamo nuevo=new DevolverPrestamo();
-        nuevo.show();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        if(Biblioteca.prestamos.size()==0)
+        {
+            JOptionPane.showMessageDialog(null,"No hay prestamos, registra uno");
+        }
+        else
+        {
+            EditarPrestamo nuevo=new EditarPrestamo();
+            nuevo.show();
+        }
+    }//GEN-LAST:event_itemEditarPrestamoActionPerformed
 
-    private void btnEditarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPrestamoActionPerformed
+    private void itemDevolverPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDevolverPrestamoActionPerformed
         // TODO add your handling code here:
-        EditarPrestamo nuevo=new EditarPrestamo();
-        nuevo.show();
-    }//GEN-LAST:event_btnEditarPrestamoActionPerformed
+        if(Biblioteca.prestamos.size()==0)
+        {
+            JOptionPane.showMessageDialog(null,"No hay prestamos, registra uno");
+        }
+        else
+        {
+            DevolverPrestamo nuevo=new DevolverPrestamo();
+            nuevo.show();
+        }
+    }//GEN-LAST:event_itemDevolverPrestamoActionPerformed
 
-    private void btnEliminarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPrestamoActionPerformed
+    private void itemEliminarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarPrestamoActionPerformed
         // TODO add your handling code here:
-        EliminarPrestamo nuevo=new EliminarPrestamo();
+        if(Biblioteca.prestamos.size()==0)
+        {
+            JOptionPane.showMessageDialog(null,"No hay prestamos, registra uno");
+        }
+        else
+        {
+            EliminarPrestamo nuevo=new EliminarPrestamo();
+            nuevo.show();
+        }
+        
+    }//GEN-LAST:event_itemEliminarPrestamoActionPerformed
+
+    private void itemMostrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMostrarUsuarioActionPerformed
+        // TODO add your handling code here:
+        if(Biblioteca.usuarios.size()==0)
+        {
+            JOptionPane.showMessageDialog(null,"No hay usuarios, registra uno");
+        }
+        else
+        {
+            MostrarUsuarios nuevo=new MostrarUsuarios();
+            nuevo.show();
+        }
+        
+    }//GEN-LAST:event_itemMostrarUsuarioActionPerformed
+
+
+    private void itemMostrarMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMostrarMaterialActionPerformed
+        // TODO add your handling code here:
+        if(Biblioteca.materiales.size()==0)
+        {
+            JOptionPane.showMessageDialog(null,"No hay material, registra uno");
+        }
+        else
+        {
+            MostrarMaterial nuevo=new MostrarMaterial();
+            nuevo.show();
+        }
+    }//GEN-LAST:event_itemMostrarMaterialActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        if(Biblioteca.prestamos.size()==0)
+        {
+            JOptionPane.showMessageDialog(null,"No hay material, registra uno");
+        }
+        else
+        {
+            EliminarPrestamo nuevo=new EliminarPrestamo();
+            nuevo.show();
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void itemAgregarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarLibroActionPerformed
+        // TODO add your handling code here:
+        AgregarLibro nuevo=new AgregarLibro();
         nuevo.show();
-    }//GEN-LAST:event_btnEliminarPrestamoActionPerformed
+    }//GEN-LAST:event_itemAgregarLibroActionPerformed
+
+    private void itemEditarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarLibroActionPerformed
+        // TODO add your handling code here:
+        EditarLibro nuevo=new EditarLibro();
+        nuevo.show();
+    }//GEN-LAST:event_itemEditarLibroActionPerformed
+
+    private void itemAgregarRevistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemAgregarRevistaActionPerformed
+        // TODO add your handling code here:
+        AgregarRevista nuevo=new AgregarRevista();
+        nuevo.show();
+    }//GEN-LAST:event_itemAgregarRevistaActionPerformed
+
+    private void itemEditarRevistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEditarRevistaActionPerformed
+        // TODO add your handling code here:
+        EditarRevista nuevo=new EditarRevista();
+        nuevo.show();
+    }//GEN-LAST:event_itemEditarRevistaActionPerformed
+
+    private void itemEliminarRevistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarRevistaActionPerformed
+        // TODO add your handling code here:
+        EliminarRevista nuevo=new EliminarRevista();
+        nuevo.show();
+    }//GEN-LAST:event_itemEliminarRevistaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -270,16 +355,24 @@ public class Principal extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditarPrestamo;
-    private javax.swing.JButton btnEliminarPrestamo;
-    private javax.swing.JButton btn_crud_libro;
-    private javax.swing.JButton btn_crud_prestamo_profesor;
-    private javax.swing.JButton btn_crud_prestamo_simple;
-    private javax.swing.JButton btn_crud_revista;
-    private javax.swing.JButton btn_mostrar_material;
-    private javax.swing.JButton btn_mostrar_prestamos;
-    private javax.swing.JButton btn_mostrar_usuarios;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JMenuItem itemAgregarLibro;
+    private javax.swing.JMenuItem itemAgregarPrestamo;
+    private javax.swing.JMenuItem itemAgregarRevista;
+    private javax.swing.JMenuItem itemDevolverPrestamo;
+    private javax.swing.JMenuItem itemEditarLibro;
+    private javax.swing.JMenuItem itemEditarPrestamo;
+    private javax.swing.JMenuItem itemEditarRevista;
+    private javax.swing.JMenuItem itemEliminarLibro;
+    private javax.swing.JMenuItem itemEliminarPrestamo;
+    private javax.swing.JMenuItem itemEliminarRevista;
+    private javax.swing.JMenuItem itemMostrarMaterial;
+    private javax.swing.JMenuItem itemMostrarUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu menuLibro;
+    private javax.swing.JMenu menuRevista;
     // End of variables declaration//GEN-END:variables
 }

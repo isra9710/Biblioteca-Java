@@ -31,6 +31,9 @@ public  class Biblioteca
     public static ArrayList<Material> materiales; 
     public static ArrayList<Usuario> usuarios;
     public static ArrayList<Prestamo> prestamos;
+    
+    
+    
     public static void inicializarPrestamos()  
     {
         Calendar date1=Calendar.getInstance();
@@ -51,7 +54,11 @@ public  class Biblioteca
         //prestamos.add(prestamo1);
     }
    
-    public static void cargarTablaUsuario(DefaultTableModel modelo)
+    
+    
+    /////////////////////////$$$$$$$$$$$$$$$Metodos de Usuario$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////
+    
+    public static void cargarTablaUsuario(DefaultTableModel modelo)//Este metodo carga una tabla con todos los usuarios
     {
        modelo.setRowCount(usuarios.size());
        int i=0;
@@ -115,7 +122,11 @@ public  class Biblioteca
 		}
               
     }
-    public static void cargarTablaUsuario(DefaultTableModel modelo, int id)
+    
+    
+    
+    
+    public static void cargarTablaUsuario(DefaultTableModel modelo, int id)//Esta funcion hace busqueda de un usuario en especifico para poner al mismo en una tabla
     {
        modelo.setRowCount(usuarios.size());
        int i=0;
@@ -180,7 +191,7 @@ public  class Biblioteca
 		}
               
     }
-    public static void llenarIdUsuario(JComboBox combo)
+    public static void llenarIdUsuario(JComboBox combo)//Esta funcion llenar un combo box con los id de los usuarios
     {
         Iterator <Usuario> it=usuarios.iterator();
         Usuario usuario;
@@ -195,7 +206,7 @@ public  class Biblioteca
         }
         
     }
-    public static void llenarMultados(JComboBox combo)
+    public static void llenarMultados(JComboBox combo)//Si se necesesitan todos los id de los usuarios multados, esta funcion sirve
     {
         Iterator <Usuario> it=usuarios.iterator();
         Usuario usuario;
@@ -210,7 +221,7 @@ public  class Biblioteca
         }
         
     }
-    public static void llenarIdUsuario(JComboBox combo, int id)
+    public static void llenarIdUsuario(JComboBox combo, int id)//Esta funcion es para editar un prestamo, conservando el id del usuario original si este no se modifica en el prestamo
     {
         Iterator <Usuario> it=usuarios.iterator();
         Usuario usuario;
@@ -225,7 +236,7 @@ public  class Biblioteca
         }
         
     }
-    public static Usuario devolverUsuario(int id)
+    public static Usuario devolverUsuario(int id)//Esta funcion devuelve un usuario despues de una busqueda por id
     {
         Usuario usuario=null;
         Iterator<Usuario> it=usuarios.iterator();
@@ -239,7 +250,7 @@ public  class Biblioteca
         }
         return usuario;
     }
-    public static void modificarUsuario(Usuario usuario)
+    public static void modificarUsuario(Usuario usuario)//Esta funcion agrega la deuda respectiva al usuario que acaba de ser registrado en un prestamo
     {
         usuario.setDeuda(75.0);
         usuario.setEntrega(false);
@@ -259,7 +270,7 @@ public  class Biblioteca
             
         }
     }
-      public static void ponerMulta(int id)
+      public static void ponerMulta(int id)//Si se entrega tarde un libro este metodo se encarga de poner la multa correspondiente
     {
         int i=0;
         Iterator<Usuario> it =usuarios.iterator();
@@ -276,7 +287,7 @@ public  class Biblioteca
         }
     
     }
-       public static void quitarMulta(int id)
+       public static void quitarMulta(int id)//Cuando se ha pagado la multa, se quita con este metodo
     {
         int i=0;
         Iterator<Usuario> it =usuarios.iterator();
@@ -291,7 +302,7 @@ public  class Biblioteca
             }
         }
     }
-      public static void saldarDeuda(int id)
+      public static void saldarDeuda(int id)//Despues de devolver un libro la deuda pasa a ser 0
       {
           int i=0;
         Iterator<Usuario> it =usuarios.iterator();
@@ -306,7 +317,7 @@ public  class Biblioteca
         }
           
      }
-      public static void aplicarDescuento(Usuario usuario)
+      public static void aplicarDescuento(Usuario usuario)//Se aplica el respectivo descuento
       {
           if(usuario instanceof Regular)
           {
@@ -319,8 +330,19 @@ public  class Biblioteca
               general.descuento(general.getDeuda());
           }
       }
+      
+      
+      
+  /////////////////////////$$$$$$$$$$$$$$$Metodos de Usuario$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////    
+      
+      
+      
+      
+      
+      
+ /////////////////////////$$$$$$$$$$$$$$$Metodos de prestamo$$$$$$$$$$$$$$$$$$$$$$$$$$$////////////////////////////// 
     
-     public static void cargarTablaPrestamos(DefaultTableModel modelo)
+     public static void cargarTablaPrestamos(DefaultTableModel modelo)//esta funcion llena una tabla con todos los prestamos no devueltos
     {
         Iterator<Prestamo> it=prestamos.iterator();
         modelo.setRowCount(prestamos.size());
@@ -380,7 +402,7 @@ public  class Biblioteca
                 i++;
         }
     }
-    public static void cargarTablaPrestamos(DefaultTableModel modelo, int id)
+    public static void cargarTablaPrestamos(DefaultTableModel modelo, int id)//Esta funcion "sobrecarga" llena una tabla de prestamos no devueltos
      {
         Iterator<Prestamo> it=prestamos.iterator();
         modelo.setRowCount(prestamos.size());
@@ -408,7 +430,7 @@ public  class Biblioteca
                 i++;
         }
     }
-    public static void cambiarEstadoPrestamo(int id_prestamo)
+    public static void cambiarEstadoPrestamo(int id_prestamo)//Esta funcion cambia el estado a "Devuelto" de un prestamo
     {
         Iterator<Prestamo> it=prestamos.iterator();
         Prestamo prestamo;
@@ -423,7 +445,7 @@ public  class Biblioteca
         }
         
     }
-    public static Prestamo devolverPrestamo(int id_prestamo)
+    public static Prestamo devolverPrestamo(int id_prestamo)//Esta funcion devuelve un prestamo despues de una busqueda por id
     {
         Prestamo prestamo=null;
         Iterator<Prestamo> it=prestamos.iterator();
@@ -437,7 +459,7 @@ public  class Biblioteca
         }
         return prestamo;
     }
-    public static void llenarComboIdPrestamo(JComboBox combo)
+    public static void llenarComboIdPrestamo(JComboBox combo)//Esta funcion llena un combo box cuando se soliciten todos los id de los prestamos no devueltos
      {
         
         Iterator<Prestamo> it=prestamos.iterator();
@@ -453,7 +475,7 @@ public  class Biblioteca
         }
         
     }
-    public static Usuario devolverUsuarioDePrestamo(int id_prestamo)
+    public static Usuario devolverUsuarioDePrestamo(int id_prestamo)//Esta funcion devuelve un usuario despues de una busqueda por id
     {
         Iterator<Prestamo> it=prestamos.iterator();
         Prestamo prestamo;
@@ -473,7 +495,7 @@ public  class Biblioteca
         
         return usuario;
     }
-    public static void calcularDias(Calendar fechaEntrega,Calendar fechaActual, int dias[])
+    public static void calcularDias(Calendar fechaEntrega,Calendar fechaActual, int dias[])//Esta funcion calcula dias, facilita el saber si se debe multar a alguien o no
     {
         int contador=0;
         while(fechaEntrega.before(fechaActual)|| fechaEntrega.equals(fechaActual))
@@ -485,8 +507,18 @@ public  class Biblioteca
         System.out.println("Dias de diferencia:"+dias[0]);
     
     }
+    /////////////////////////$$$$$$$$$$$$$$$Metodos de prestamo$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////
     
-     public static void cargarTablaMateriales(DefaultTableModel modelo)
+    
+    
+    
+    
+    
+    
+    
+    
+ /////////////////////////$$$$$$$$$$$$$$$Metodos de Materia$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////   
+     public static void cargarTablaMateriales(DefaultTableModel modelo)//Esta funcion llena una tabla de materiales
      {
          Iterator<Material> it=materiales.iterator();
         modelo.setRowCount(materiales.size());
@@ -529,7 +561,7 @@ public  class Biblioteca
         
         }  
      }
-     public static void cargarTablaMateriales(DefaultTableModel modelo, int id)
+     public static void cargarTablaMateriales(DefaultTableModel modelo, int id)//Esta funcion con sobre carga llena una tabla de materiales
      {
          Iterator<Material> it=materiales.iterator();
         modelo.setRowCount(materiales.size());
@@ -575,7 +607,7 @@ public  class Biblioteca
         
         }  
      }
-     public static void agregarMaterial(int id_material)
+     public static void agregarMaterial(int id_material)//Esta funcin agrega ejemplares
      {
          Iterator<Material> it=materiales.iterator();
         Material material;
@@ -586,7 +618,7 @@ public  class Biblioteca
         }
      }
      
-     public static Material devolverMaterial(int id)
+     public static Material devolverMaterial(int id)//Esta funcion devuelve material despues de una busqueda por id
      {
          Material material=null;
          Iterator<Material> it = materiales.iterator();
@@ -602,7 +634,7 @@ public  class Biblioteca
         return material;
      }
       
-    public static void llenarComboIdMaterial(JComboBox combo)
+    public static void llenarComboIdMaterial(JComboBox combo)//Esta funcion sirve para llenar los comboBox donde se requieran materiales
     {
         Iterator <Material> it=materiales.iterator();
         Material material;
@@ -610,6 +642,34 @@ public  class Biblioteca
         {
             material=it.next();
             if(material.getEjemplares()>0)
+            {
+                combo.addItem(material.getId_material());
+            }
+        
+        }
+    }
+    public static void editarLibroCombo(JComboBox combo)//Esta funcion es para llenar el combo box de editarLibros
+    {
+        Iterator <Material> it=materiales.iterator();
+        Material material;
+        while(it.hasNext())
+        {
+            material=it.next();
+            if(material instanceof Libro)
+            {
+                combo.addItem(material.getId_material());
+            }
+        
+        }
+    }
+    public static void editarRevistaCombo(JComboBox combo)//Esta funcion es para llenar el combo box de editarLibros
+    {
+        Iterator <Material> it=materiales.iterator();
+        Material material;
+        while(it.hasNext())
+        {
+            material=it.next();
+            if(material instanceof Revista)
             {
                 combo.addItem(material.getId_material());
             }
@@ -624,4 +684,87 @@ public  class Biblioteca
          material.setStatus(false);
         }
     }
+    
+    ///// &&&&&& Excepciones&&&&&&&&&&&&&&&&////
+    public static void validarTitulo(String cadena) throws Excepcion//Este metodo valida que se haya ingresado texto para el titulo de un material
+    {
+       if(cadena==null)
+        {
+            throw new Excepcion("Debes ingresar texto");
+        }
+    
+    }
+    public static void validarCadena(String cadena) throws Excepcion//Valida que la cadena no sea numero y tenga texto
+    {
+        if(cadena==null)
+        {
+            throw new Excepcion("Debes ingresar texto");
+        }
+        
+        for(int i=0;i<cadena.length();i++)
+        {
+                if(!Character.isLetter(cadena.charAt(i)))
+                {
+                    throw new Excepcion("No debes ingresar numeros, solo letras para esta seccion, error en Autor,Editorial o Categoria");
+                } 
+        } 
+        
+    }
+   public static void validarEjemplares(int ejemplares) throws Excepcion//Valida que los ejemplares registrados sean mayores a 0
+   {
+       if(ejemplares<=0)
+       {
+           throw new Excepcion("El numero de ejemplares debe ser mayor a 0");
+       }
+   
+   }
+   public static void validarEjemplares(String ejemplares) throws Excepcion
+   {
+       for(int i=0;i<ejemplares.length();i++)
+        {
+                if(Character.isLetter(ejemplares.charAt(i)))
+                {
+                    throw new Excepcion("No debes ingresar letras, solo numeros para los ejemplares");
+                } 
+        }
+       Integer entero = Integer.valueOf(ejemplares);
+       if(entero<0)
+       {
+           throw new Excepcion("Tienes que tener mas de un ejemplar");
+       }
+       if(!(entero%1==0))
+       {
+           throw new Excepcion("Tienes que poner un numero entero para los ejemplares");
+       }
+       
+   }
+   public static void validarAnio(String anio) throws Excepcion
+   {
+       for(int i=0;i<anio.length();i++)
+        {
+                if(Character.isLetter(anio.charAt(i)))
+                {
+                    throw new Excepcion("No debes ingresar letras, solo numeros para el anio");
+                } 
+        }
+       Integer entero = Integer.valueOf(anio);
+       if(entero<999)
+       {
+           throw new Excepcion("¿De verdad conseguiste un libro tan viejo?");
+       }
+       if(!(entero%1==0))
+       {
+           throw new Excepcion("Tienes que poner un numero entero para los anios");
+       }
+       
+   }
+   public static void validaraAnio(int anio) throws Excepcion
+   {
+       if(anio<999)
+       {
+           throw new Excepcion("¿De verdad conseguiste un libro tan viejo?");
+       }
+   
+   }
+   /////////////////////////$$$$$$$$$$$$$$$Metodos de Materia$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////
 }

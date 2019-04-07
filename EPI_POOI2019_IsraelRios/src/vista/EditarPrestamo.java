@@ -1,8 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Nombres: Israel Rios Contreras
+Carrera: Ingenieria en informatica
+Cuatrimestre: 5
+Grupo:B
+Evidencia: Integradora
+EPI_POO2019_IsraelRios.
+*/
 package vista;
 
 import com.toedter.calendar.JDateChooser;
@@ -10,6 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.*;
 import controlador.*;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 /**
  *
  * @author israel
@@ -224,6 +228,8 @@ public class EditarPrestamo extends javax.swing.JFrame {
         System.out.println("\n");
         System.out.println("\n");
         Prestamo.editar((int)cmboPrestamosHechos.getSelectedItem(), (int)cmboUsuarios.getSelectedItem(),(int)cmboMateriales.getSelectedItem(),fecha);
+        JOptionPane.showMessageDialog(null,"Prestamo editado");
+        this.dispose();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
