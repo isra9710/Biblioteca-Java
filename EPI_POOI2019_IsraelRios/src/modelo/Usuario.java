@@ -27,7 +27,7 @@ public  class Usuario
         this.apellidoM = apellidoM;
         this.telefono = telefono;
         multa=0.0;
-        entrega=false;
+        entrega=true;
         retardo=false;
         deuda=0.0;
         id++;

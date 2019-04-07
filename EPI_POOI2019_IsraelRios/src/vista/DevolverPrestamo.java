@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import modelo.*;
 
 /**
  *
@@ -177,9 +178,11 @@ public class DevolverPrestamo extends javax.swing.JFrame {
         Biblioteca.agregarMaterial(id_material[0]);
         Biblioteca.cambiarEstadoPrestamo(id_prestamo[0]);
         System.out.println("El total de dias fue"+dias[0]);
+        Usuario usuario=Biblioteca.devolverUsuario(id_usuario[0]);
         if(dias[0]>3)
         {
             Biblioteca.ponerMulta(id_usuario[0]);
+            Biblioteca.saldarDeuda(id_usuario[0]);
             JOptionPane.showMessageDialog(null,"El usuario ha sido multado, necesita pagar la multa para poder adquirir otro libro");
         }
         else

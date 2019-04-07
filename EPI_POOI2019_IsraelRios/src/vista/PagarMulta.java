@@ -120,7 +120,7 @@ public class PagarMulta extends javax.swing.JPanel {
 //2.- limpiar la tabla
         modelo.getDataVector().clear();
         id_usuario[0]=(int)cmboAdeudores.getSelectedItem();
-        Biblioteca.cargarTablaUsuario(modelo,id_usuario);
+        Biblioteca.cargarTablaUsuario(modelo,id_usuario[0]);
         tablaUsuarios.updateUI();
     }//GEN-LAST:event_cmboAdeudoresActionPerformed
 

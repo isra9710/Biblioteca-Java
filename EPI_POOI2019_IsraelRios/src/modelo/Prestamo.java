@@ -11,6 +11,7 @@ package modelo;
 import controlador.Biblioteca;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 
 /**
  *
@@ -59,8 +60,6 @@ public class Prestamo
         id++;
         id_prestamo=id;
     }
-
-  
 
     public Usuario getUsuario() {
         return usuario;
@@ -111,11 +110,89 @@ public class Prestamo
     }
     public static void aniadir(int id_prestamo, Usuario usuario, Calendar fechaSalida, Calendar fechaRegreso, boolean status, Material material)
     {
+        material.setEjemplares(material.getEjemplares()-1);
         Biblioteca.prestamos.add(new Prestamo(id_prestamo,usuario,fechaSalida,fechaRegreso,status,material));
        
     }
+    public static void editar(int id_prestamo, int id_usuario, int id_material,Calendar fechaSalida)
+    {
+        Usuario usuario;
+        Prestamo prestamo;
+        Material material;
+        usuario=Biblioteca.devolverUsuario(id_usuario);
+        prestamo=Biblioteca.devolverPrestamo(id_prestamo);
+        material=Biblioteca.devolverMaterial(id_material);
+        if(prestamo.getUsuario().getIdUsuario()!=id_usuario)
+        {
+            prestamo.getUsuario().setDeuda(0);
+            prestamo.getUsuario().setEntrega(true);
+            prestamo.getUsuario().setRetardo(false);
+            prestamo.setUsuario(usuario);
+            usuario.setEntrega(false);
+            usuario.setDeuda(75);
+        }
+         
+        if(prestamo.getMaterial().getId_material()!= id_material)
+        {
+            prestamo.getMaterial().setEjemplares(prestamo.getMaterial().getEjemplares()+1);
+            prestamo.setMaterial(material);
+            prestamo.getMaterial().setEjemplares(prestamo.getMaterial().getEjemplares()-1);
+        }
+        int dias[]=new int[1];
+        Calendar fecha1=prestamo.getFechaSalida();
+        Calendar fecha2=fechaSalida;
+        Calendar fechaRegreso=Calendar.getInstance();
+        System.out.println("Fecha de salida original");
+        System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha1));
+        System.out.println("Fecha de salida modificada");
+        System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha2));
+        Biblioteca.calcularDias(fecha1, fecha2, dias);
+        if(dias[0]>0)
+        {
+            fechaSalida.add(Calendar.DATE,-dias[0]);
+            prestamo.setFechaSalida(fechaSalida); 
+            fechaRegreso.set(fechaSalida.get(Calendar.YEAR),fechaSalida.get(Calendar.MONTH),fechaSalida.get(Calendar.DATE)+3);
+            prestamo.setFechaRegreso(fechaRegreso);
+            System.out.println("Entro en el primer if, las fechas insertadas fueron:");
+            System.out.println("Fecha de salida:");
+            System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaSalida));
+            System.out.println("Fecha de regreso:");
+            System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaRegreso));
+        }
+        else
+        {
+            Biblioteca.calcularDias(fecha2, fecha1, dias); 
+            if(dias[0]>0)
+            {
+                fechaSalida.add(Calendar.DATE,-dias[0]);
+                prestamo.setFechaSalida(fechaSalida);
+                fechaRegreso.set(fechaSalida.get(Calendar.YEAR),fechaSalida.get(Calendar.MONTH),fechaSalida.get(Calendar.DATE)+3);
+                prestamo.setFechaRegreso(fechaRegreso);
+                System.out.println("Entro en el primer else, las fechas insertadas fueron:");
+                System.out.println("Fecha de salida:");
+                System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaSalida));
+                System.out.println("Fecha de regreso:");
+                System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaRegreso));
+            }
+        }
+    }
     public static void eliminar(int id_prestamo)
     {
+        Iterator<Prestamo> it=Biblioteca.prestamos.iterator();
+        Prestamo prestamo;
+        while(it.hasNext())
+        {
+            prestamo=it.next();
+            if(prestamo.getId_prestamo()==id_prestamo)
+            {
+                //Biblioteca.buscarModificarUsuario(prestamo.getUsuario().getIdUsuario());
+                prestamo.getUsuario().setRetardo(false);
+                prestamo.getUsuario().setDeuda(0);
+                prestamo.getUsuario().setEntrega(true);
+                prestamo.getMaterial().setEjemplares(prestamo.getMaterial().getEjemplares()+1);
+                it.remove();
+            }
+        }
         
     }
     public void setMaterial(Material material) {

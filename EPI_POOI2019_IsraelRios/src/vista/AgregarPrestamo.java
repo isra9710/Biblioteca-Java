@@ -6,21 +6,24 @@
 package vista;
 import controlador.Biblioteca;
 import java.util.Calendar;
+import javax.swing.table.DefaultTableModel;
 import modelo.*;
 /**
  *
  * @author israel
  */
-public class AgregarPrestamoSimple extends javax.swing.JFrame {
+public class AgregarPrestamo extends javax.swing.JFrame {
 
     /**
      * Creates new form CrudPrestamoProfesor
      */
     Calendar fechaActual;
-    public AgregarPrestamoSimple() {
+    public AgregarPrestamo() {
         initComponents();
         fechaActual=Calendar.getInstance();
         this.txtFechaSalida.setText(String.format("%1$tY-%1$tm-%1$td",fechaActual.getTime()));
+        Biblioteca.llenarComboIdMaterial(cmboMateriales);
+        Biblioteca.llenarIdUsuario(cmboUsuarios);
     }
 
     /**
@@ -35,14 +38,20 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
         cmboUsuarios = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        cmboMaterial = new javax.swing.JComboBox<>();
+        cmboMateriales = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaMateriales = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtFechaSalida = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        cmboUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmboUsuariosActionPerformed(evt);
+            }
+        });
 
         tablaUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,6 +74,12 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
         });
         tablaUsuarios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaUsuarios);
+
+        cmboMateriales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmboMaterialesActionPerformed(evt);
+            }
+        });
 
         tablaMateriales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,13 +124,13 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmboMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmboMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAgregar)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnAgregar))
+                                .addGap(26, 26, 26)
+                                .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -125,18 +140,18 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(cmboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(cmboMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmboMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                .addGap(41, 41, 41)
                 .addComponent(btnAgregar)
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         pack();
@@ -145,13 +160,31 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         Prestamo prestamo=new Prestamo();
-        Usuario usuario=Biblioteca.devolverUsuario(WIDTH);
-        Material material=Biblioteca.devolverMaterial(WIDTH);
+        Usuario usuario=Biblioteca.devolverUsuario((int)cmboUsuarios.getSelectedItem());
+        Biblioteca.modificarUsuario(usuario);
+        Material material=Biblioteca.devolverMaterial((int)cmboMateriales.getSelectedItem());
         Calendar fechaRegreso=Calendar.getInstance();
         fechaRegreso.add(Calendar.DATE, +3);
-        Prestamo.aniadir(prestamo.getId_prestamo(), usuario, fechaActual, fechaRegreso, prestamo.getStatus(), material);     
-        
+        Prestamo.aniadir(prestamo.getId_prestamo(), usuario, fechaActual, fechaRegreso, prestamo.getStatus(), material);   
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void cmboUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboUsuariosActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo=(DefaultTableModel) tablaUsuarios.getModel();
+         modelo.getDataVector().clear();
+        int id=(int)cmboUsuarios.getSelectedItem();
+        Biblioteca.cargarTablaUsuario(modelo,id);
+        tablaUsuarios.updateUI();
+    }//GEN-LAST:event_cmboUsuariosActionPerformed
+
+    private void cmboMaterialesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboMaterialesActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo=(DefaultTableModel) tablaMateriales.getModel();
+        modelo.getDataVector().clear();
+        int id=(int)cmboMateriales.getSelectedItem();
+        Biblioteca.cargarTablaMateriales(modelo,id);
+        tablaUsuarios.updateUI();
+    }//GEN-LAST:event_cmboMaterialesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,14 +203,18 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AgregarPrestamoSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AgregarPrestamoSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AgregarPrestamoSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AgregarPrestamoSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AgregarPrestamo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -186,14 +223,14 @@ public class AgregarPrestamoSimple extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AgregarPrestamoSimple().setVisible(true);
+                new AgregarPrestamo().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JComboBox<String> cmboMaterial;
+    private javax.swing.JComboBox<String> cmboMateriales;
     private javax.swing.JComboBox<String> cmboUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

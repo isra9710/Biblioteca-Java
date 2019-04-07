@@ -42,9 +42,13 @@ public  class Biblioteca
         usuarios.add((Usuario)nuevo);
         usuarios.add((Usuario)nuev);
         Libro libro=new Libro("Porrua","20,000 Viajes de Legua Submarina","Julio Verne","Libro",1867,200);
+        Libro libro1=new Libro("Porrua","La divina comedia","Dante","Libro",1865,500);
         materiales.add((Material)libro);
-        Prestamo prestamo=new Prestamo((Usuario)nuevo,(Material)libro,date,date1,false); 
-        prestamos.add((Prestamo)prestamo);
+        materiales.add((Material)libro1);
+        //Prestamo prestamo=new Prestamo((Usuario)nuevo,(Material)libro,date,date1,false); 
+       // Prestamo prestamo1=new Prestamo((Usuario)nuev,(Material)libro,date,date1,false);
+        //prestamos.add(prestamo);
+        //prestamos.add(prestamo1);
     }
    
     public static void cargarTablaUsuario(DefaultTableModel modelo)
@@ -111,7 +115,7 @@ public  class Biblioteca
 		}
               
     }
-    public static void cargarTablaUsuario(DefaultTableModel modelo, int id[])
+    public static void cargarTablaUsuario(DefaultTableModel modelo, int id)
     {
        modelo.setRowCount(usuarios.size());
        int i=0;
@@ -120,7 +124,7 @@ public  class Biblioteca
                 {
                     Usuario usuario;
                     usuario=it.next();
-                    if(usuario.getIdUsuario()==id[0])
+                    if(usuario.getIdUsuario()==id)
                     {
                         modelo.setValueAt(usuario.getIdUsuario(),i, 0);
                         modelo.setValueAt(usuario.getTipoUsuario(),i,1 );
@@ -176,11 +180,55 @@ public  class Biblioteca
 		}
               
     }
+    public static void llenarIdUsuario(JComboBox combo)
+    {
+        Iterator <Usuario> it=usuarios.iterator();
+        Usuario usuario;
+        while(it.hasNext())
+        {
+            usuario=it.next();
+            if(usuario.getEntrega()&& usuario.getDeuda()==0&&usuario.getMulta()==0)
+                
+            {
+                combo.addItem(usuario.getIdUsuario());
+            }
+        }
+        
+    }
+    public static void llenarMultados(JComboBox combo)
+    {
+        Iterator <Usuario> it=usuarios.iterator();
+        Usuario usuario;
+        while(it.hasNext())
+        {
+            usuario=it.next();
+            if(usuario.getMulta()>0)
+                
+            {
+                combo.addItem(usuario.getIdUsuario());
+            }
+        }
+        
+    }
+    public static void llenarIdUsuario(JComboBox combo, int id)
+    {
+        Iterator <Usuario> it=usuarios.iterator();
+        Usuario usuario;
+        combo.addItem(id);
+        while(it.hasNext())
+        {
+            usuario=it.next();
+            if(usuario.getEntrega())   
+            {
+                combo.addItem(usuario.getIdUsuario());
+            }
+        }
+        
+    }
     public static Usuario devolverUsuario(int id)
     {
         Usuario usuario=null;
         Iterator<Usuario> it=usuarios.iterator();
-        int i=0;
         while(it.hasNext())
         {
             usuario=it.next();
@@ -190,6 +238,11 @@ public  class Biblioteca
             }
         }
         return usuario;
+    }
+    public static void modificarUsuario(Usuario usuario)
+    {
+        usuario.setDeuda(75.0);
+        usuario.setEntrega(false);
     }
     public static void adeudoresUsuario(JComboBox combo)
     {
@@ -253,6 +306,19 @@ public  class Biblioteca
         }
           
      }
+      public static void aplicarDescuento(Usuario usuario)
+      {
+          if(usuario instanceof Regular)
+          {
+              Regular regular=(Regular)usuario;
+              regular.descuento(regular.getDeuda());  
+          }
+          else if(usuario instanceof General)
+          {
+              General general=(General)usuario;
+              general.descuento(general.getDeuda());
+          }
+      }
     
      public static void cargarTablaPrestamos(DefaultTableModel modelo)
     {
@@ -314,17 +380,110 @@ public  class Biblioteca
                 i++;
         }
     }
+    public static void cargarTablaPrestamos(DefaultTableModel modelo, int id)
+     {
+        Iterator<Prestamo> it=prestamos.iterator();
+        modelo.setRowCount(prestamos.size());
+        int i=0;
+        String status=null;
+        Prestamo prestamo;
+        while(it.hasNext()) 
+        {
+             prestamo=it.next();
+            if(!prestamo.getStatus())
+            {
+                status=("No Devuelto");
+            }
+            if(prestamo.getId_prestamo()==id)
+            {
+                modelo.setValueAt(prestamo.getId_prestamo(), i, 0);
+                modelo.setValueAt(prestamo.getUsuario().getIdUsuario(), i,1 );
+                modelo.setValueAt(prestamo.getUsuario().getNombre(), i,2 );
+                modelo.setValueAt(String.format("%1$tY-%1$tm-%1$td",   prestamo.getFechaSalida().getTime()), i, 3);
+                modelo.setValueAt(String.format("%1$tY-%1$tm-%1$td",   prestamo.getFechaRegreso().getTime()), i,4 );
+                modelo.setValueAt(prestamo.getMaterial().getTitulo(), i, 5);
+                modelo.setValueAt(status,i,6);
+                Calendar fechaAux=prestamo.getFechaRegreso();
+            }
+                i++;
+        }
+    }
     public static void cambiarEstadoPrestamo(int id_prestamo)
     {
         Iterator<Prestamo> it=prestamos.iterator();
-        int i=0;
         Prestamo prestamo;
         while(it.hasNext())
         {
             prestamo=it.next();
-            prestamo.setStatus(true);
+            if(prestamo.getId_prestamo()==id_prestamo)
+            {
+                prestamo.setStatus(true);
+            }
+            
         }
         
+    }
+    public static Prestamo devolverPrestamo(int id_prestamo)
+    {
+        Prestamo prestamo=null;
+        Iterator<Prestamo> it=prestamos.iterator();
+        while(it.hasNext())
+        {
+            prestamo=it.next();
+            if(prestamo.getId_prestamo()==id_prestamo)
+            {
+                return prestamo;
+            }
+        }
+        return prestamo;
+    }
+    public static void llenarComboIdPrestamo(JComboBox combo)
+     {
+        
+        Iterator<Prestamo> it=prestamos.iterator();
+        Prestamo prestamo;
+        while(it.hasNext())
+        {
+            prestamo=it.next();
+            if(!prestamo.getStatus())
+            {
+                combo.addItem(prestamo.getId_prestamo());
+            }
+            
+        }
+        
+    }
+    public static Usuario devolverUsuarioDePrestamo(int id_prestamo)
+    {
+        Iterator<Prestamo> it=prestamos.iterator();
+        Prestamo prestamo;
+        Usuario usuario=null;
+        while (it.hasNext())
+        {
+            prestamo=it.next();
+            if(prestamo.getId_prestamo()==id_prestamo)
+            {
+               usuario=prestamo.getUsuario();
+               return usuario;
+            }
+                
+        
+       }
+        
+        
+        return usuario;
+    }
+    public static void calcularDias(Calendar fechaEntrega,Calendar fechaActual, int dias[])
+    {
+        int contador=0;
+        while(fechaEntrega.before(fechaActual)|| fechaEntrega.equals(fechaActual))
+        {
+            contador++;
+            fechaEntrega.add(Calendar.DATE,1);
+        }
+        dias[0]=contador;
+        System.out.println("Dias de diferencia:"+dias[0]);
+    
     }
     
      public static void cargarTablaMateriales(DefaultTableModel modelo)
@@ -345,7 +504,7 @@ public  class Biblioteca
             {
                 estado=("NO DISPONIBLE");
             }
-            modelo.setValueAt(material.getIdMaterial(), i, 0);
+            modelo.setValueAt(material.getId_material(), i, 0);
             modelo.setValueAt(material.getTitulo(), i, 1);
             modelo.setValueAt(material.getAutor(), i,2);
             modelo.setValueAt(material.getAnio(), i,3 );
@@ -370,10 +529,55 @@ public  class Biblioteca
         
         }  
      }
+     public static void cargarTablaMateriales(DefaultTableModel modelo, int id)
+     {
+         Iterator<Material> it=materiales.iterator();
+        modelo.setRowCount(materiales.size());
+        int i=0;
+        String estado;
+        while(it.hasNext()) 
+        {
+            Material material;
+            material=it.next();
+            if(material.getId_material()==id)
+            {   
+                if(material.getStatus())
+                {
+                    estado=("DISPONIBLE");
+                }
+                else
+                {
+                    estado=("NO DISPONIBLE");
+                }
+                modelo.setValueAt(material.getId_material(), i, 0);
+                modelo.setValueAt(material.getTitulo(), i, 1);
+                modelo.setValueAt(material.getAutor(), i,2);
+                modelo.setValueAt(material.getAnio(), i,3 );
+                modelo.setValueAt(material.getTipoMaterial(), i,4 );
+                modelo.setValueAt(material.getEjemplares(), i,5 );
+                modelo.setValueAt(estado, i, 6);
+                if(material instanceof Libro)
+                {
+                    Libro libro;
+                    libro=(Libro)material;
+                    modelo.setValueAt(libro.getEditorial(), i,7 );
+                    modelo.setValueAt("No aplica", i, 8);
+                }
+                else if(material instanceof Revista)
+                {
+                    Revista revista;
+                    revista=(Revista)material;
+                    modelo.setValueAt("No aplica", i,7 );
+                    modelo.setValueAt(revista.getCategoria(), i, 8);
+                }
+            }
+            i++;
+        
+        }  
+     }
      public static void agregarMaterial(int id_material)
      {
          Iterator<Material> it=materiales.iterator();
-        int i=0;
         Material material;
         while(it.hasNext())
         {
@@ -382,24 +586,6 @@ public  class Biblioteca
         }
      }
      
-     
-     public static void llenarComboIdPrestamo(JComboBox combo)
-     {
-        
-        Iterator<Prestamo> it=prestamos.iterator();
-        int i=0;
-        Prestamo prestamo;
-        while(it.hasNext())
-        {
-            prestamo=it.next();
-            if(!(prestamo.getStatus()))
-            {
-                combo.addItem(prestamo.getId_prestamo());
-            }
-            
-        }
-        
-    }
      public static Material devolverMaterial(int id)
      {
          Material material=null;
@@ -408,26 +594,34 @@ public  class Biblioteca
          while(it.hasNext())
          {
              material=it.next();
-             if(material.getIdMaterial()==id)
+             if(material.getId_material()==id)
              {
                  return material;
              }
          }
         return material;
      }
-    public static void calcularDias(Calendar fechaEntrega,Calendar fechaActual, int dias[])
+      
+    public static void llenarComboIdMaterial(JComboBox combo)
     {
-        int contador=0;
-        while(fechaEntrega.before(fechaActual)|| fechaEntrega.equals(fechaActual))
+        Iterator <Material> it=materiales.iterator();
+        Material material;
+        while(it.hasNext())
         {
-            contador++;
-            fechaEntrega.add(Calendar.DATE,1);
+            material=it.next();
+            if(material.getEjemplares()>0)
+            {
+                combo.addItem(material.getId_material());
+            }
+        
         }
-        dias[0]=contador;
-        System.out.println("Fecha entrega Original: ");
-        System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaEntrega.getTime()));
-    
     }
-          
-    
+    public static void modificarMaterial(Material material)
+    {
+        material.setEjemplares(material.getEjemplares()-1);
+        if(material.getEjemplares()==0)
+        {
+         material.setStatus(false);
+        }
+    }
 }

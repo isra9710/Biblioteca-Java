@@ -14,7 +14,8 @@ package modelo;
  */
 public class Material 
 {
-    private static int id_material=0;
+    private static int id=0; 
+    int id_material;
     private String Titulo,Autor, tipoMaterial;
     private int anio;
     private boolean status;
@@ -27,23 +28,20 @@ public class Material
         this.anio = anio;
         this.ejemplares = ejemplares;
         status=true;
-        id_material=id_material+1;
+        id++;
+        id_material=id;
+    }
+
+    public int getId_material() {
+        return id_material;
+    }
+
+    public void setId_material(int id_material) {
+        this.id_material = id_material;
     }
     
 
    
-    
-    public static int getId_material() 
-    {
-        
-        return id_material;
-    }
-
-    public static void setId_material(int id_material)
-    {
-        Material.id_material = id_material;
-    }
-
     public String getTitulo()
     {
         return Titulo;
@@ -71,10 +69,6 @@ public class Material
     public void setAnio(int anio)
     {
         this.anio = anio;
-    }
-    public int getIdMaterial()
-    {
-        return id_material;
     }
 
     public String getTipoMaterial() {

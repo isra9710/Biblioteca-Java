@@ -50,6 +50,8 @@ public class Principal extends javax.swing.JFrame
         btn_crud_revista = new javax.swing.JButton();
         btn_crud_prestamo_profesor = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        btnEditarPrestamo = new javax.swing.JButton();
+        btnEliminarPrestamo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +62,7 @@ public class Principal extends javax.swing.JFrame
             }
         });
 
-        btn_crud_prestamo_simple.setText("CRUD PRESTAMO SIMPLE");
+        btn_crud_prestamo_simple.setText("Añadir Prestamo");
         btn_crud_prestamo_simple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_crud_prestamo_simpleActionPerformed(evt);
@@ -101,6 +103,20 @@ public class Principal extends javax.swing.JFrame
 
         jButton2.setText("Pagar Multa");
 
+        btnEditarPrestamo.setText("Editar Prestamo");
+        btnEditarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPrestamoActionPerformed(evt);
+            }
+        });
+
+        btnEliminarPrestamo.setText("Eliminar Prestamo");
+        btnEliminarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPrestamoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,21 +134,26 @@ public class Principal extends javax.swing.JFrame
                                     .addComponent(btn_crud_libro))
                                 .addGap(77, 77, 77)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btn_crud_prestamo_simple)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btn_crud_prestamo_simple)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(btnEditarPrestamo))
                                     .addComponent(btn_crud_prestamo_profesor)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(244, 244, 244)
                         .addComponent(btn_mostrar_prestamos)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton2)
                             .addComponent(jButton1)
-                            .addGap(52, 52, 52))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btn_mostrar_usuarios)
-                            .addGap(66, 66, 66)))))
+                            .addComponent(btn_mostrar_usuarios))
+                        .addGap(66, 66, 66))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarPrestamo)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +161,9 @@ public class Principal extends javax.swing.JFrame
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_crud_libro)
-                    .addComponent(btn_crud_prestamo_simple))
+                    .addComponent(btn_crud_prestamo_simple)
+                    .addComponent(btnEditarPrestamo)
+                    .addComponent(btnEliminarPrestamo))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_crud_revista)
@@ -149,14 +172,14 @@ public class Principal extends javax.swing.JFrame
                 .addComponent(btn_mostrar_prestamos)
                 .addGap(127, 127, 127))
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2)
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_mostrar_material)
-                    .addComponent(btn_mostrar_usuarios))
+                .addGap(18, 18, 18)
+                .addComponent(btn_mostrar_usuarios)
+                .addGap(12, 12, 12)
+                .addComponent(btn_mostrar_material)
                 .addGap(80, 80, 80))
         );
 
@@ -183,7 +206,7 @@ public class Principal extends javax.swing.JFrame
 
     private void btn_crud_prestamo_simpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_crud_prestamo_simpleActionPerformed
         // TODO add your handling code here:
-        CrudPrestamoSimple nuevo=new CrudPrestamoSimple();
+        AgregarPrestamo nuevo=new AgregarPrestamo();
        nuevo.show();
     }//GEN-LAST:event_btn_crud_prestamo_simpleActionPerformed
 
@@ -198,6 +221,18 @@ public class Principal extends javax.swing.JFrame
         DevolverPrestamo nuevo=new DevolverPrestamo();
         nuevo.show();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnEditarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPrestamoActionPerformed
+        // TODO add your handling code here:
+        EditarPrestamo nuevo=new EditarPrestamo();
+        nuevo.show();
+    }//GEN-LAST:event_btnEditarPrestamoActionPerformed
+
+    private void btnEliminarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPrestamoActionPerformed
+        // TODO add your handling code here:
+        EliminarPrestamo nuevo=new EliminarPrestamo();
+        nuevo.show();
+    }//GEN-LAST:event_btnEliminarPrestamoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,6 +270,8 @@ public class Principal extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEditarPrestamo;
+    private javax.swing.JButton btnEliminarPrestamo;
     private javax.swing.JButton btn_crud_libro;
     private javax.swing.JButton btn_crud_prestamo_profesor;
     private javax.swing.JButton btn_crud_prestamo_simple;
