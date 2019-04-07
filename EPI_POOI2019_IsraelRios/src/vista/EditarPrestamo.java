@@ -23,6 +23,7 @@ public class EditarPrestamo extends javax.swing.JFrame {
     int id_usuario_original;
     public EditarPrestamo() {
         initComponents();
+        this.setTitle("Editar prestamo");
         Biblioteca.llenarComboIdPrestamo(cmboPrestamosHechos);
         Biblioteca.llenarComboIdMaterial(cmboMateriales);
     }
@@ -47,6 +48,7 @@ public class EditarPrestamo extends javax.swing.JFrame {
         tablaMateriales = new javax.swing.JTable();
         fechaSalida = new com.toedter.calendar.JDateChooser();
         btnAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -139,6 +141,13 @@ public class EditarPrestamo extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,7 +164,10 @@ public class EditarPrestamo extends javax.swing.JFrame {
                             .addComponent(cmboMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAceptar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAceptar)
+                                .addGap(35, 35, 35)
+                                .addComponent(btnCancelar)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -177,7 +189,9 @@ public class EditarPrestamo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(fechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                .addComponent(btnAceptar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptar)
+                    .addComponent(btnCancelar))
                 .addGap(21, 21, 21))
         );
 
@@ -221,16 +235,40 @@ public class EditarPrestamo extends javax.swing.JFrame {
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         // TODO add your handling code here:
-        Calendar fecha=fechaSalida.getCalendar();
-        Calendar fecha2=fecha;
-        System.out.println("Fecha puesta por el usuario");
-        System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha));
-        System.out.println("\n");
-        System.out.println("\n");
-        Prestamo.editar((int)cmboPrestamosHechos.getSelectedItem(), (int)cmboUsuarios.getSelectedItem(),(int)cmboMateriales.getSelectedItem(),fecha);
-        JOptionPane.showMessageDialog(null,"Prestamo editado");
-        this.dispose();
+        if(cmboPrestamosHechos.getSelectedItem()==null)
+        {
+            JOptionPane.showMessageDialog(null,"Al parecer no hay prestamos para Editar");
+            this.dispose();
+        }
+        
+        try
+        {
+            Calendar fecha=fechaSalida.getCalendar();
+            Biblioteca.validarFecha(fechaSalida);
+            System.out.println("Fecha puesta por el usuario");
+            System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha));
+            System.out.println("\n");
+            System.out.println("\n");
+            Prestamo.editar((int)cmboPrestamosHechos.getSelectedItem(), (int)cmboUsuarios.getSelectedItem(),(int)cmboMateriales.getSelectedItem(),fecha);
+            JOptionPane.showMessageDialog(null,"Prestamo editado");
+            this.dispose();
+        }
+        catch(Excepcion e)
+        {
+            JOptionPane.showMessageDialog(null,e.getMessage());
+        }
+        catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null,"Error al editar el prestamo");
+        }
+        
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -269,6 +307,7 @@ public class EditarPrestamo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmboMateriales;
     private javax.swing.JComboBox<String> cmboPrestamosHechos;
     private javax.swing.JComboBox<String> cmboUsuarios;

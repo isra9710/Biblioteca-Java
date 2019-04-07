@@ -11,6 +11,8 @@ import modelo.*;
 import controlador.Biblioteca;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,9 +24,12 @@ public class MostrarMaterial extends javax.swing.JFrame {
     /**
      * Creates new form MostrarMaterial
      */
+    String ruta="";
+    Icon imagen;
     public MostrarMaterial() 
     {
         initComponents();
+        this.setTitle("Vista de todos los materiales");
         cargarTablaMaterial();
     }
     public void cargarTablaMaterial()
@@ -33,7 +38,8 @@ public class MostrarMaterial extends javax.swing.JFrame {
         //2.- limpiar la tabla
         modelo.getDataVector().clear();
         //3.- Iteramos
-        Biblioteca.cargarTablaMateriales(modelo);
+        Biblioteca biblioteca=new Biblioteca();
+        biblioteca.cargarTablaMateriales(modelo,jLabelFoto);
         tablaMateriales.updateUI();
     }
 
@@ -48,6 +54,8 @@ public class MostrarMaterial extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMateriales = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
+        jLabelFoto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,27 +78,79 @@ public class MostrarMaterial extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tablaMateriales.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaMaterialesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablaMateriales);
+
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        jLabelFoto.setText("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(btnVolver))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(btnVolver)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void tablaMaterialesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMaterialesMouseClicked
+        // TODO add your handling code here:
+        int seleccion=tablaMateriales.getSelectedRow();
+        Material material;
+        material=Biblioteca.devolverMaterial((int) tablaMateriales.getValueAt(seleccion, 0));
+        if(material instanceof Libro)
+        {
+            Libro libro=(Libro)material;
+            if(libro.getFoto()!=null)
+            {
+                System.out.println(libro.getFoto());
+                //imagen=new ImageIcon(getClass().getResource(libro.getFoto()));
+                //jLabelFoto.setIcon(imagen);
+                //rsscalabel.RSScaleLabel.setScalable(JLabelFoto,libro.getFoto());
+                rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFoto, libro.getFoto());
+            }
+            
+            
+        }
+        
+    }//GEN-LAST:event_tablaMaterialesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -128,6 +188,8 @@ public class MostrarMaterial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel jLabelFoto;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaMateriales;
     // End of variables declaration//GEN-END:variables

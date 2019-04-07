@@ -37,6 +37,7 @@ public class DevolverPrestamo extends javax.swing.JFrame {
     int dias[];
     public DevolverPrestamo() {
         initComponents();
+        this.setTitle("Devolver prestamo");
         fechaActual=Calendar.getInstance();
         id_usuario=new int[1];
         id_material=new int[1];
@@ -66,9 +67,10 @@ public class DevolverPrestamo extends javax.swing.JFrame {
         cmboId_Prestamo = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPrestamos = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnDevolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtFechaActual = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,16 +111,23 @@ public class DevolverPrestamo extends javax.swing.JFrame {
             tablaPrestamos.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        jButton1.setText("Devolver");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnDevolver.setText("Devolver");
+        btnDevolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnDevolverActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Fecha actual:");
 
         txtFechaActual.setEditable(false);
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,11 +141,12 @@ public class DevolverPrestamo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1))))
+                            .addComponent(jLabel1)
+                            .addComponent(btnDevolver))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCancelar)
+                            .addComponent(txtFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(473, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -153,7 +163,9 @@ public class DevolverPrestamo extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtFechaActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnDevolver)
+                    .addComponent(btnCancelar))
                 .addGap(205, 205, 205))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -176,7 +188,7 @@ public class DevolverPrestamo extends javax.swing.JFrame {
         tablaPrestamos.updateUI();
     }//GEN-LAST:event_cmboId_PrestamoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         // TODO add your handling code here:
         Biblioteca.agregarMaterial(id_material[0]);
         Biblioteca.cambiarEstadoPrestamo(id_prestamo[0]);
@@ -193,7 +205,13 @@ public class DevolverPrestamo extends javax.swing.JFrame {
             Biblioteca.saldarDeuda(id_usuario[0]);
             JOptionPane.showMessageDialog(null,"El usuario devolvio el material a tiempo");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnDevolverActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,8 +249,9 @@ public class DevolverPrestamo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDevolver;
     private javax.swing.JComboBox<String> cmboId_Prestamo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaPrestamos;

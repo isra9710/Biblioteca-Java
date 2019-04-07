@@ -22,6 +22,7 @@ public class EditarRevista extends javax.swing.JFrame {
      */
     public EditarRevista() {
         initComponents();
+        this.setTitle("Editar revista");
         Biblioteca.editarRevistaCombo(cmboMateriales);
     }
     
@@ -49,8 +50,9 @@ public class EditarRevista extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaMateriales = new javax.swing.JTable();
+        btnCancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +104,13 @@ public class EditarRevista extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tablaMateriales);
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,7 +146,9 @@ public class EditarRevista extends javax.swing.JFrame {
                                 .addComponent(anio, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
-                        .addComponent(jButton1)))
+                        .addComponent(jButton1)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnCancelar)))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -164,7 +175,9 @@ public class EditarRevista extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(categoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnCancelar))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -175,12 +188,12 @@ public class EditarRevista extends javax.swing.JFrame {
         // TODO add your handling code here:
         try
         {
-            Biblioteca.validarTitulo(titulo.getText());
-            Biblioteca.validarCadena(autor.getText());
-            Biblioteca.validarEjemplares(ejemplares.getText());
-            Biblioteca.validarAnio(anio.getText());
-            Biblioteca.validarCadena(categoria.getText());
-            Libro.editar((int)cmboMateriales.getSelectedItem(), categoria.getText(), titulo.getText(), autor.getText(), "Libro",Integer.valueOf(anio.getText()) , Integer.valueOf(anio.getText()));
+            Biblioteca.validarTitulo(titulo);
+            Biblioteca.validarCadena(autor);
+            Biblioteca.validarEjemplares(ejemplares);
+            Biblioteca.validarAnio(anio);
+            Biblioteca.validarCadena(categoria);
+            Revista.editar((int)cmboMateriales.getSelectedItem(), categoria.getText(), titulo.getText(), autor.getText(), "Revista",Integer.valueOf(anio.getText()) , Integer.valueOf(anio.getText()));
             JOptionPane.showMessageDialog(null,"Revista editada con exito");
         }
         catch(Excepcion e)
@@ -214,6 +227,11 @@ public class EditarRevista extends javax.swing.JFrame {
         anio.setText(Integer.toString(material.getAnio()));
         tablaMateriales.updateUI();//Hasta aqui acaba lo de materiales*/
     }//GEN-LAST:event_cmboMaterialesActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,6 +271,7 @@ public class EditarRevista extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField anio;
     private javax.swing.JTextField autor;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JTextField categoria;
     private javax.swing.JComboBox<String> cmboMateriales;
     private javax.swing.JTextField ejemplares;

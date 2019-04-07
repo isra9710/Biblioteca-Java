@@ -17,14 +17,19 @@ import java.util.Iterator;
  */
 public class Libro extends Material
 {
-    private String editorial;
+    private String editorial,foto;
 
     public Libro(String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
     {
         super(Titulo, Autor, tipoMaterial, anio, ejemplares);
         this.editorial = editorial;
     }
-
+    public Libro(String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares,String foto)
+    {
+        super(Titulo, Autor, tipoMaterial, anio, ejemplares);
+        this.editorial = editorial;
+        this.foto=foto;
+    }
    
 
     public String getEditorial()
@@ -37,12 +42,20 @@ public class Libro extends Material
         this.editorial = editorial;
     }
 
-    public static void aniadir(String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
-    {
-        //tipoMaterial="Libro";
-        Biblioteca.materiales.add((Material)new Libro(editorial,Titulo,Autor,tipoMaterial,anio,ejemplares));
+    public String getFoto() {
+        return foto;
     }
-    public static void editar(int id,String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    
+
+    public static void aniadir(String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares,String foto)
+    {
+        Biblioteca.materiales.add((Material)new Libro(editorial,Titulo,Autor,tipoMaterial,anio,ejemplares,foto));
+    }
+    public static void editar(int id,String editorial, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares,String foto)
     {
         Libro libro=(Libro)Biblioteca.devolverMaterial(id);
         libro.setEditorial(editorial);
@@ -51,6 +64,7 @@ public class Libro extends Material
         libro.setTipoMaterial(tipoMaterial);
         libro.setAnio(anio);
         libro.setEjemplares(ejemplares);
+        libro.setFoto(foto);
     }
     public static void eliminar(int id)
     {

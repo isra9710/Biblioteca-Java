@@ -24,6 +24,7 @@ public class AgregarPrestamo extends javax.swing.JFrame {
     Calendar fechaActual;
     public AgregarPrestamo() {
         initComponents();
+        this.setTitle("Agregar Prestamo");
         fechaActual=Calendar.getInstance();
         this.txtFechaSalida.setText(String.format("%1$tY-%1$tm-%1$td",fechaActual.getTime()));
         Biblioteca.llenarComboIdMaterial(cmboMateriales);
@@ -48,6 +49,7 @@ public class AgregarPrestamo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtFechaSalida = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -117,6 +119,13 @@ public class AgregarPrestamo extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +139,10 @@ public class AgregarPrestamo extends javax.swing.JFrame {
                             .addComponent(cmboUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmboMateriales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 697, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAgregar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnAgregar)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnCancelar))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(26, 26, 26)
@@ -154,7 +166,9 @@ public class AgregarPrestamo extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtFechaSalida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addComponent(btnAgregar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(171, Short.MAX_VALUE))
         );
 
@@ -191,6 +205,11 @@ public class AgregarPrestamo extends javax.swing.JFrame {
         Biblioteca.cargarTablaMateriales(modelo,id);
         tablaUsuarios.updateUI();
     }//GEN-LAST:event_cmboMaterialesActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,6 +255,7 @@ public class AgregarPrestamo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cmboMateriales;
     private javax.swing.JComboBox<String> cmboUsuarios;
     private javax.swing.JLabel jLabel1;

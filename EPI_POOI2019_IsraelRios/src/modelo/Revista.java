@@ -43,11 +43,17 @@ public class Revista extends Material
 
      public static void aniadir(String categoria, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
     {
-    
+        Biblioteca.materiales.add((Material)new Revista(categoria,Titulo,Autor,tipoMaterial,anio,ejemplares));
     }
-     public static void editar(String categoria, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
+     public static void editar(int id,String categoria, String Titulo, String Autor, String tipoMaterial, int anio, int ejemplares)
      {
-     
+         Revista libro=(Revista)Biblioteca.devolverMaterial(id);
+        libro.setCategoria(categoria);
+        libro.setTitulo(Titulo);
+        libro.setAutor(Autor);
+        libro.setTipoMaterial(tipoMaterial);
+        libro.setAnio(anio);
+        libro.setEjemplares(ejemplares);
      }
     public static void eliminar(int id)
     {

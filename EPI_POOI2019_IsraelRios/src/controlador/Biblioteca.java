@@ -8,15 +8,20 @@ EPI_POO2019_IsraelRios.
 */
 package controlador;
 
+import com.toedter.calendar.JDateChooser;
+import java.awt.Image;
+import java.io.File;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.TreeSet;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.*;
 
@@ -31,6 +36,9 @@ public  class Biblioteca
     public static ArrayList<Material> materiales; 
     public static ArrayList<Usuario> usuarios;
     public static ArrayList<Prestamo> prestamos;
+
+    public Biblioteca() {
+    }
     
     
     
@@ -518,7 +526,7 @@ public  class Biblioteca
     
     
  /////////////////////////$$$$$$$$$$$$$$$Metodos de Materia$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////   
-     public static void cargarTablaMateriales(DefaultTableModel modelo)//Esta funcion llena una tabla de materiales
+     public void cargarTablaMateriales(DefaultTableModel modelo, JLabel foto)//Esta funcion llena una tabla de materiales
      {
          Iterator<Material> it=materiales.iterator();
         modelo.setRowCount(materiales.size());
@@ -546,6 +554,7 @@ public  class Biblioteca
             if(material instanceof Libro)
             {
                 Libro libro;
+                Icon icon;
                 libro=(Libro)material;
                 modelo.setValueAt(libro.getEditorial(), i,7 );
                 modelo.setValueAt("No aplica", i, 8);
@@ -606,6 +615,17 @@ public  class Biblioteca
             i++;
         
         }  
+     }
+     public static String agregarFoto()
+     {
+         String foto="";
+        JFileChooser fc  = new JFileChooser();
+        fc.setDialogTitle("Buscar imagen");
+        if(fc.showOpenDialog(fc) == JFileChooser.APPROVE_OPTION){
+            File archivo = new File(fc.getSelectedFile().toString());
+            return archivo.toString();
+        }
+        return foto;
      }
      public static void agregarMaterial(int id_material)//Esta funcin agrega ejemplares
      {
@@ -686,26 +706,26 @@ public  class Biblioteca
     }
     
     ///// &&&&&& Excepciones&&&&&&&&&&&&&&&&////
-    public static void validarTitulo(String cadena) throws Excepcion//Este metodo valida que se haya ingresado texto para el titulo de un material
+    public static void validarTitulo(JTextField cadena) throws Excepcion//Este metodo valida que se haya ingresado texto para el titulo de un material
     {
-       if(cadena==null)
-        {
-            throw new Excepcion("Debes ingresar texto");
-        }
-    
-    }
-    public static void validarCadena(String cadena) throws Excepcion//Valida que la cadena no sea numero y tenga texto
-    {
-        if(cadena==null)
+       if(cadena.getText().isEmpty())
         {
             throw new Excepcion("Debes ingresar texto");
         }
         
-        for(int i=0;i<cadena.length();i++)
+    
+    }
+    public static void validarCadena(JTextField cadena) throws Excepcion//Valida que la cadena no sea numero y tenga texto
+    {
+        if(cadena.getText().isEmpty())
         {
-                if(!Character.isLetter(cadena.charAt(i)))
+            throw new Excepcion("Debes ingresar texto");
+        }  
+        for(int i=0;i<cadena.getText().length();i++)
+        {
+                if(!Character.isLetter(cadena.getText().charAt(i)))
                 {
-                    throw new Excepcion("No debes ingresar numeros, solo letras para esta seccion, error en Autor,Editorial o Categoria");
+                    throw new Excepcion("No debes ingresar numeros, solo letras para esta seccion, error en Autor,Editorial o Categoria"+cadena.getText());
                 } 
         } 
         
@@ -718,16 +738,21 @@ public  class Biblioteca
        }
    
    }
-   public static void validarEjemplares(String ejemplares) throws Excepcion
+   public static void validarEjemplares(JTextField ejemplares) throws Excepcion
    {
-       for(int i=0;i<ejemplares.length();i++)
+       if(ejemplares==null)
         {
-                if(Character.isLetter(ejemplares.charAt(i)))
+            throw new Excepcion("Debes ingresar texto");
+        }
+       
+       for(int i=0;i<ejemplares.getText().length();i++)
+        {
+                if(Character.isLetter(ejemplares.getText().charAt(i)))
                 {
                     throw new Excepcion("No debes ingresar letras, solo numeros para los ejemplares");
                 } 
         }
-       Integer entero = Integer.valueOf(ejemplares);
+       Integer entero = Integer.valueOf(ejemplares.getText());
        if(entero<0)
        {
            throw new Excepcion("Tienes que tener mas de un ejemplar");
@@ -738,19 +763,28 @@ public  class Biblioteca
        }
        
    }
-   public static void validarAnio(String anio) throws Excepcion
+   public static void validarAnio(JTextField anio) throws Excepcion
    {
-       for(int i=0;i<anio.length();i++)
+       if(anio.getText().isEmpty())
         {
-                if(Character.isLetter(anio.charAt(i)))
+            throw new Excepcion("Debes ingresar texto");
+        }
+       
+       for(int i=0;i<anio.getText().length();i++)
+        {
+                if(Character.isLetter(anio.getText().charAt(i)))
                 {
                     throw new Excepcion("No debes ingresar letras, solo numeros para el anio");
                 } 
         }
-       Integer entero = Integer.valueOf(anio);
+       Integer entero = Integer.valueOf(anio.getText());
        if(entero<999)
        {
            throw new Excepcion("¿De verdad conseguiste un libro tan viejo?");
+       }
+       if(entero>2019)
+       {
+           throw new Excepcion("¿Como conseguiste ese libro del fututo?");
        }
        if(!(entero%1==0))
        {
@@ -764,7 +798,26 @@ public  class Biblioteca
        {
            throw new Excepcion("¿De verdad conseguiste un libro tan viejo?");
        }
+       if(anio>2019)
+       {
+           throw new Excepcion("Todavia no llegamos a ese anio");
+       }
    
+   }
+   public static void validarFecha(JDateChooser fecha) throws Excepcion
+   {
+   
+       if(fecha.getDate()==null)
+       {
+           throw new Excepcion("Elige una fecha por favor");
+       }
+   }
+   public static void validarFoto(String foto) throws Excepcion
+   {
+       if(foto.isEmpty())
+       {
+           throw new Excepcion("Elige una imagen por favor");
+       }
    }
    /////////////////////////$$$$$$$$$$$$$$$Metodos de Materia$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////
 }

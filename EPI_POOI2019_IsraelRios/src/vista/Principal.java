@@ -49,6 +49,7 @@ public class Principal extends javax.swing.JFrame
         itemEditarPrestamo = new javax.swing.JMenuItem();
         itemDevolverPrestamo = new javax.swing.JMenuItem();
         itemEliminarPrestamo = new javax.swing.JMenuItem();
+        itemPagarMulta = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         itemMostrarUsuario = new javax.swing.JMenuItem();
         itemMostrarMaterial = new javax.swing.JMenuItem();
@@ -100,6 +101,14 @@ public class Principal extends javax.swing.JFrame
         });
         jMenu1.add(itemEliminarPrestamo);
 
+        itemPagarMulta.setText("Pagar Multa");
+        itemPagarMulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemPagarMultaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(itemPagarMulta);
+
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Mostrar");
@@ -149,6 +158,11 @@ public class Principal extends javax.swing.JFrame
         menuLibro.add(itemEditarLibro);
 
         itemEliminarLibro.setText("Eliminar Libro");
+        itemEliminarLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEliminarLibroActionPerformed(evt);
+            }
+        });
         menuLibro.add(itemEliminarLibro);
 
         jMenuBar1.add(menuLibro);
@@ -284,7 +298,7 @@ public class Principal extends javax.swing.JFrame
         }
         else
         {
-            EliminarPrestamo nuevo=new EliminarPrestamo();
+            MostrarPrestamos nuevo=new MostrarPrestamos();
             nuevo.show();
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -318,6 +332,17 @@ public class Principal extends javax.swing.JFrame
         EliminarRevista nuevo=new EliminarRevista();
         nuevo.show();
     }//GEN-LAST:event_itemEliminarRevistaActionPerformed
+
+    private void itemEliminarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEliminarLibroActionPerformed
+        // TODO add your handling code here:
+        EliminarLibro nuevo=new EliminarLibro();
+    }//GEN-LAST:event_itemEliminarLibroActionPerformed
+
+    private void itemPagarMultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPagarMultaActionPerformed
+        // TODO add your handling code here:
+        PagarMulta nuevo= new PagarMulta();
+        nuevo.show();
+    }//GEN-LAST:event_itemPagarMultaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +392,7 @@ public class Principal extends javax.swing.JFrame
     private javax.swing.JMenuItem itemEliminarRevista;
     private javax.swing.JMenuItem itemMostrarMaterial;
     private javax.swing.JMenuItem itemMostrarUsuario;
+    private javax.swing.JMenuItem itemPagarMulta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

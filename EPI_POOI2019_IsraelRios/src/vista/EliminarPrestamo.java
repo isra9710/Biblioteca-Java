@@ -24,6 +24,7 @@ public class EliminarPrestamo extends javax.swing.JFrame {
      */
     public EliminarPrestamo() {
         initComponents();
+        this.setTitle("Eliminar prestamo");
         llenarCombo();
     }
     public void llenarCombo()
@@ -45,6 +46,7 @@ public class EliminarPrestamo extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPrestamos = new javax.swing.JTable();
         btnEliminar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -82,6 +84,13 @@ public class EliminarPrestamo extends javax.swing.JFrame {
             }
         });
 
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,7 +103,10 @@ public class EliminarPrestamo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEliminar)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEliminar)
+                                .addGap(26, 26, 26)
+                                .addComponent(btnCancelar))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 794, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(56, Short.MAX_VALUE))
         );
@@ -106,7 +118,9 @@ public class EliminarPrestamo extends javax.swing.JFrame {
                 .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(71, 71, 71)
-                .addComponent(btnEliminar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnCancelar))
                 .addContainerGap(175, Short.MAX_VALUE))
         );
 
@@ -126,10 +140,23 @@ public class EliminarPrestamo extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        Prestamo.eliminar((int)cmboPrestamosHechos.getSelectedItem());
-        JOptionPane.showMessageDialog(null,"Se ha eliminado este prestamo");
+        if(cmboPrestamosHechos.getSelectedItem()==null)
+        {
+            JOptionPane.showMessageDialog(null,"Al parecer no hay prestamos por eliminar");
+        }
+        else
+        {
+            Prestamo.eliminar((int)cmboPrestamosHechos.getSelectedItem());
+            JOptionPane.showMessageDialog(null,"Se ha eliminado este prestamo");
+        }
         this.dispose();
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +194,7 @@ public class EliminarPrestamo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JComboBox<String> cmboPrestamosHechos;
     private javax.swing.JScrollPane jScrollPane1;

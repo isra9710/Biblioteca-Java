@@ -1,22 +1,18 @@
 /*
-Nombres: Israel Rios Contreras
-Carrera: Ingenieria en informatica
-Cuatrimestre: 5
-Grupo:B
-Evidencia: Integradora
-EPI_POO2019_IsraelRios.
-*/
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vista;
-
-import controlador.Biblioteca;
+import controlador.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
+import modelo.*;
 /**
  *
  * @author israel
  */
-public class PagarMulta extends javax.swing.JPanel {
+public class PagarMulta extends javax.swing.JFrame {
 
     /**
      * Creates new form PagarMulta
@@ -24,13 +20,9 @@ public class PagarMulta extends javax.swing.JPanel {
     int id_usuario[];
     public PagarMulta() {
         initComponents();
+        this.setTitle("Pagar multa");
         id_usuario=new int[1];
-        llenarComboUsuario();
-    
-    }
-    public void llenarComboUsuario()
-    {
-       Biblioteca.adeudoresUsuario(cmboAdeudores);
+        Biblioteca.adeudoresUsuario(cmboAdeudores);
     }
 
     /**
@@ -42,15 +34,25 @@ public class PagarMulta extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cmboAdeudores = new javax.swing.JComboBox<>();
+        btnCancelar = new javax.swing.JButton();
+        btnPagar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        btnPagar = new javax.swing.JButton();
+        cmboAdeudores = new javax.swing.JComboBox<>();
 
-        cmboAdeudores.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmboAdeudores.addActionListener(new java.awt.event.ActionListener() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmboAdeudoresActionPerformed(evt);
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        btnPagar.setText("Pagar");
+        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPagarActionPerformed(evt);
             }
         });
 
@@ -76,66 +78,114 @@ public class PagarMulta extends javax.swing.JPanel {
         tablaUsuarios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tablaUsuarios);
 
-        btnPagar.setText("Pagar");
-        btnPagar.addActionListener(new java.awt.event.ActionListener() {
+        cmboAdeudores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPagarActionPerformed(evt);
+                cmboAdeudoresActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 836, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 24, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(cmboAdeudores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnPagar)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnCancelar))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(btnPagar)))
-                .addContainerGap(697, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
-                    .addContainerGap()))
+                        .addGap(24, 24, 24)
+                        .addComponent(cmboAdeudores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addComponent(cmboAdeudores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
-                .addComponent(btnPagar)
-                .addGap(43, 43, 43))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(53, 53, 53)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(104, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPagar)
+                    .addComponent(btnCancelar))
+                .addGap(198, 198, 198))
         );
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+        // TODO add your handling code here:
+        if(cmboAdeudores.getSelectedItem()==null)
+        {
+            JOptionPane.showMessageDialog(null,"Al parecer nadie ha tenido retrasos con sus entregas");
+        }
+        else
+        {
+            Biblioteca.quitarMulta(id_usuario[0]);
+            JOptionPane.showMessageDialog(null,"El usuario ha pagado su deuda con la sociedad");
+        }
+            this.dispose();
+    }//GEN-LAST:event_btnPagarActionPerformed
 
     private void cmboAdeudoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmboAdeudoresActionPerformed
         // TODO add your handling code here:DefaultTableModel modelo=(DefaultTableModel) tablaPrestamos.getModel();
- DefaultTableModel modelo=(DefaultTableModel) tablaUsuarios.getModel();        
-//2.- limpiar la tabla
+        DefaultTableModel modelo=(DefaultTableModel) tablaUsuarios.getModel();
+        //2.- limpiar la tabla
         modelo.getDataVector().clear();
         id_usuario[0]=(int)cmboAdeudores.getSelectedItem();
         Biblioteca.cargarTablaUsuario(modelo,id_usuario[0]);
         tablaUsuarios.updateUI();
     }//GEN-LAST:event_cmboAdeudoresActionPerformed
 
-    private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        Biblioteca.quitarMulta(id_usuario[0]);
-        JOptionPane.showMessageDialog(null,"El usuario ha pagado su deuda con la sociedad");
-    }//GEN-LAST:event_btnPagarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(PagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(PagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(PagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(PagarMulta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PagarMulta().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnPagar;
     private javax.swing.JComboBox<String> cmboAdeudores;
     private javax.swing.JScrollPane jScrollPane1;
