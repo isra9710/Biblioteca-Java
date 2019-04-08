@@ -192,7 +192,6 @@ public class DevolverPrestamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         Biblioteca.agregarEjemplares(id_material[0]);
         Biblioteca.cambiarEstadoPrestamo(id_prestamo[0]);
-        System.out.println("El total de dias fue"+dias[0]);
         Usuario usuario=Biblioteca.devolverUsuario(id_usuario[0]);
         if(dias[0]>3)
         {

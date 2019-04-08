@@ -142,10 +142,6 @@ public class Prestamo
         Calendar fecha1=prestamo.getFechaSalida();
         Calendar fecha2=fechaSalida;
         Calendar fechaRegreso=Calendar.getInstance();
-        System.out.println("Fecha de salida original");
-        System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha1));
-        System.out.println("Fecha de salida modificada");
-        System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha2));
         Biblioteca.calcularDias(fecha1, fecha2, dias);
         if(dias[0]>0)
         {
@@ -153,11 +149,7 @@ public class Prestamo
             prestamo.setFechaSalida(fechaSalida); 
             fechaRegreso.set(fechaSalida.get(Calendar.YEAR),fechaSalida.get(Calendar.MONTH),fechaSalida.get(Calendar.DATE)+3);
             prestamo.setFechaRegreso(fechaRegreso);
-            System.out.println("Entro en el primer if, las fechas insertadas fueron:");
-            System.out.println("Fecha de salida:");
-            System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaSalida));
-            System.out.println("Fecha de regreso:");
-            System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaRegreso));
+    
         }
         else
         {
@@ -168,11 +160,6 @@ public class Prestamo
                 prestamo.setFechaSalida(fechaSalida);
                 fechaRegreso.set(fechaSalida.get(Calendar.YEAR),fechaSalida.get(Calendar.MONTH),fechaSalida.get(Calendar.DATE)+3);
                 prestamo.setFechaRegreso(fechaRegreso);
-                System.out.println("Entro en el primer else, las fechas insertadas fueron:");
-                System.out.println("Fecha de salida:");
-                System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaSalida));
-                System.out.println("Fecha de regreso:");
-                System.out.println(String.format("%1$tY-%1$tm-%1$td",fechaRegreso));
             }
         }
     }

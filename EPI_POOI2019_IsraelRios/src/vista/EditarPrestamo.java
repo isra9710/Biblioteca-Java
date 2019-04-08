@@ -245,10 +245,6 @@ public class EditarPrestamo extends javax.swing.JFrame {
         {
             Calendar fecha=fechaSalida.getCalendar();
             Biblioteca.validarFecha(fechaSalida);
-            System.out.println("Fecha puesta por el usuario");
-            System.out.println(String.format("%1$tY-%1$tm-%1$td",fecha));
-            System.out.println("\n");
-            System.out.println("\n");
             Prestamo.editar((int)cmboPrestamosHechos.getSelectedItem(), (int)cmboUsuarios.getSelectedItem(),(int)cmboMateriales.getSelectedItem(),fecha);
             JOptionPane.showMessageDialog(null,"Prestamo editado");
             this.dispose();

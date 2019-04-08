@@ -56,10 +56,6 @@ public  class Biblioteca
         Libro libro1=new Libro("Porrua","La divina comedia","Dante","Libro",1865,500);
         materiales.add((Material)libro);
         materiales.add((Material)libro1);
-        //Prestamo prestamo=new Prestamo((Usuario)nuevo,(Material)libro,date,date1,false); 
-       // Prestamo prestamo1=new Prestamo((Usuario)nuev,(Material)libro,date,date1,false);
-        //prestamos.add(prestamo);
-        //prestamos.add(prestamo1);
     }
    
     
@@ -522,7 +518,7 @@ public  class Biblioteca
             fechaEntrega.add(Calendar.DATE,1);
         }
         dias[0]=contador;
-        System.out.println("Dias de diferencia:"+dias[0]);
+        
     
     }
     /////////////////////////$$$$$$$$$$$$$$$Metodos de prestamo$$$$$$$$$$$$$$$$$$$$$$$$$$$//////////////////////////////
