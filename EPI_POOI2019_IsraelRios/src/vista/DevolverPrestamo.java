@@ -190,7 +190,7 @@ public class DevolverPrestamo extends javax.swing.JFrame {
 
     private void btnDevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolverActionPerformed
         // TODO add your handling code here:
-        Biblioteca.agregarMaterial(id_material[0]);
+        Biblioteca.agregarEjemplares(id_material[0]);
         Biblioteca.cambiarEstadoPrestamo(id_prestamo[0]);
         System.out.println("El total de dias fue"+dias[0]);
         Usuario usuario=Biblioteca.devolverUsuario(id_usuario[0]);

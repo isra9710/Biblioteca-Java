@@ -19,8 +19,8 @@ import java.util.Iterator;
  */
 public class Prestamo
 {
-    public static int id=0;
-    public int id_prestamo;
+    private static int id=0;
+    private int id_prestamo;
     private Usuario usuario;
     private Calendar fechaSalida,fechaRegreso;
     private boolean status;

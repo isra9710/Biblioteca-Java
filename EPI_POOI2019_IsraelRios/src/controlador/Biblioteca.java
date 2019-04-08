@@ -262,6 +262,16 @@ public  class Biblioteca
     {
         usuario.setDeuda(75.0);
         usuario.setEntrega(false);
+        if(usuario instanceof Regular)
+        {
+            Regular regular=(Regular)usuario;
+            regular.descuento(regular.getDeuda());
+        }
+        else if(usuario instanceof General)
+        {
+            General general=(General)usuario;
+            general.descuento(general.getDeuda());
+        }
     }
     public static void adeudoresUsuario(JComboBox combo)
     {
@@ -620,14 +630,14 @@ public  class Biblioteca
      {
          String foto="";
         JFileChooser fc  = new JFileChooser();
-        fc.setDialogTitle("Buscar imagen");
+        fc.setDialogTitle("Busca una foto para el libro");
         if(fc.showOpenDialog(fc) == JFileChooser.APPROVE_OPTION){
             File archivo = new File(fc.getSelectedFile().toString());
             return archivo.toString();
         }
         return foto;
      }
-     public static void agregarMaterial(int id_material)//Esta funcin agrega ejemplares
+     public static void agregarEjemplares(int id_material)//Esta funcin agrega ejemplares
      {
          Iterator<Material> it=materiales.iterator();
         Material material;
@@ -696,7 +706,7 @@ public  class Biblioteca
         
         }
     }
-    public static void modificarMaterial(Material material)
+    public static void modificarEjemplaresMaterial(Material material)
     {
         material.setEjemplares(material.getEjemplares()-1);
         if(material.getEjemplares()==0)

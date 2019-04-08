@@ -107,14 +107,14 @@ public class Material
         return "Material{" + "Titulo=" + Titulo + ", Autor=" + Autor + ", tipoMaterial=" + tipoMaterial + ", anio=" + anio + ", status=" + status + ", ejemplares=" + ejemplares + '}';
     }
 
-  
-    
-    
-    
-    public void aniadir()
+    public static void aniadir()
     {
     }
-    public void eliminar()
+    public static void editar()
+    {
+    
+    }
+    public static void eliminar()
     {
         
     }
